@@ -70,6 +70,9 @@ FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length);
  */
 FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wordsLength);
 
+
+void flashProtectionDisable(void);
+
 #endif  /* __FLASH_H */
 
 /***************************************************************************************************

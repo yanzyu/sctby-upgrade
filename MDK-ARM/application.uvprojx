@@ -334,7 +334,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER, STM32L053xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\src\hal_driver\Inc;..\src\hal_driver\Inc\Legacy;..\src\perpherial\Inc;..\src\user\Inc</IncludePath>
+              <IncludePath>..\src\hal_driver\Inc;..\src\hal_driver\Inc\Legacy;..\src\perpherial\Inc;..\src\user\Inc;..\src\appConfig</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

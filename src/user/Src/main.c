@@ -35,46 +35,7 @@ typedef void(*func)(void);
  *          wordsLength: the length of the array.
  * @return  state of option
  */
-#ifdef FLASH_DISABLE
-static void flashProtectionDisable(void)
-{
-    uint32_t ProtectedPages;
-    /*Variable used to handle the Options Bytes*/
-    FLASH_OBProgramInitTypeDef OptionsBytesStruct;
 
-    /* Unlock the Options Bytes *************************************************/
-    HAL_FLASH_OB_Unlock();
-
-    /* Get pages write protection status ****************************************/
-    HAL_FLASHEx_OBGetConfig(&OptionsBytesStruct);
-    
-    /* Get pages already write protected ****************************************/
-    ProtectedPages = OptionsBytesStruct.WRPSector | FLASH_SECTORS_TO_BE_PROTECTED;
-    
-    /* Check if there is write protected pages ********************************/
-    if((OptionsBytesStruct.WRPSector & FLASH_SECTORS_TO_BE_PROTECTED) == FLASH_SECTORS_TO_BE_PROTECTED)
-    {
-
-        /* Restore write protected pages */
-        OptionsBytesStruct.OptionType   = OPTIONBYTE_WRP;
-        OptionsBytesStruct.WRPState     = OB_WRPSTATE_DISABLE;
-        OptionsBytesStruct.WRPSector 	= ProtectedPages;
-         
-        if(HAL_FLASHEx_OBProgram(&OptionsBytesStruct) != HAL_OK)
-        {
-            /* Error occurred while options bytes programming. **********************/
-            while (1)
-            {		
-            }
-        }
-        /* Generate System Reset to load the new option byte values ***************/
-        HAL_FLASH_OB_Launch();
-    }  
-    
-    /* Lock the Options Bytes *************************************************/
-    HAL_FLASH_OB_Lock();
-}
-#endif
 
 #define FUNC_ADDR 0x8000100
 

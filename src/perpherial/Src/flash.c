@@ -32,26 +32,22 @@
  * 					Length: 	 the number of bytes need to be erased.
  * @return  state of option
  */
-FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length)
-{
-  FLASH_EraseInitTypeDef    EraseInitStruct;
-  uint32_t result        =  FLASHIF_OK;
+FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length) {
+    FLASH_EraseInitTypeDef    EraseInitStruct;
+    uint32_t result        =  FLASHIF_OK;
 
-  __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_SIZERR |
-                         FLASH_FLAG_OPTVERR | FLASH_FLAG_RDERR | FLASH_FLAG_FWWERR | 
-                         FLASH_FLAG_NOTZEROERR);
-  HAL_FLASH_Unlock();
+    HAL_FLASH_Unlock();
 
-  EraseInitStruct.PageAddress  = pageStart;
-  EraseInitStruct.TypeErase    = FLASH_TYPEERASE_PAGES;
-  EraseInitStruct.NbPages      = length / FLASH_PAGE_SIZE;
+    EraseInitStruct.PageAddress  = pageStart;
+    EraseInitStruct.TypeErase    = FLASH_TYPEERASE_PAGES;
+    EraseInitStruct.NbPages      = length / FLASH_PAGE_SIZE;
     
-  if (HAL_FLASHEx_Erase(&EraseInitStruct, &result) != HAL_OK)
-      return FLASHIF_ERASE_ERROR;
+    if (HAL_FLASHEx_Erase(&EraseInitStruct, &result) != HAL_OK)
+        return FLASHIF_ERASE_ERROR;
   
-  HAL_FLASH_Lock();
+    HAL_FLASH_Lock();
 
-  return FLASHIF_OK;
+    return FLASHIF_OK;
 }	
 
 
@@ -68,8 +64,7 @@ FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length)
  *          wordsLength: the length of the array.
  * @return  state of option
  */
-FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wordsLength)
-{
+FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wordsLength) {
     uint32_t data    =   0;
     uint32_t i       =   0;
   
@@ -77,8 +72,7 @@ FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wor
     HAL_FLASH_Unlock();
 
     /* write the words to the memory */
-    while(i<wordsLength)
-    {
+    while(i<wordsLength) {
         /* transfer 8bit data to 32bit data */
         data = (uint32_t)p_source[i*4] + (uint32_t)(p_source[i*4+1] << 8) +  
             (uint32_t)(p_source[i*4+2] << 16) +  (uint32_t)(p_source[i*4+3] << 24);
@@ -93,6 +87,45 @@ FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wor
 
     return FLASHIF_OK;
 }	
+
+
+
+#ifdef FLASH_DISABLE
+void flashProtectionDisable(void) {
+    uint32_t ProtectedPages;
+    /*Variable used to handle the Options Bytes*/
+    FLASH_OBProgramInitTypeDef OptionsBytesStruct;
+
+    /* Unlock the Options Bytes *************************************************/
+    HAL_FLASH_OB_Unlock();
+
+    /* Get pages write protection status ****************************************/
+    HAL_FLASHEx_OBGetConfig(&OptionsBytesStruct);
+    
+    /* Get pages already write protected ****************************************/
+    ProtectedPages = OptionsBytesStruct.WRPSector | FLASH_SECTORS_TO_BE_PROTECTED;
+    
+    /* Check if there is write protected pages ********************************/
+    if((OptionsBytesStruct.WRPSector & FLASH_SECTORS_TO_BE_PROTECTED) == FLASH_SECTORS_TO_BE_PROTECTED) {
+
+        /* Restore write protected pages */
+        OptionsBytesStruct.OptionType   = OPTIONBYTE_WRP;
+        OptionsBytesStruct.WRPState     = OB_WRPSTATE_DISABLE;
+        OptionsBytesStruct.WRPSector 	= ProtectedPages;
+         
+        if(HAL_FLASHEx_OBProgram(&OptionsBytesStruct) != HAL_OK) {
+            /* Error occurred while options bytes programming. **********************/
+            while (1) { };
+        }
+        /* Generate System Reset to load the new option byte values ***************/
+        HAL_FLASH_OB_Launch();
+    }  
+    
+    /* Lock the Options Bytes *************************************************/
+    HAL_FLASH_OB_Lock();
+}
+#endif
+
 /***************************************************************************************************
 * HISTORY LIST
 * 1. Create File by yan zeyu @ 20151127
