@@ -20,19 +20,12 @@
  * INCLUDES
  */
 #include "stm32l0xx_hal.h"
-#include "uart.h"
-#include "clock.h"
 
-#include "stm32l0538_discovery.h"   //for debug
 
 /***************************************************************************************************
  * MACRO
  */
-//#define FLASH_DISABLE
 
-#ifdef FLASH_DISABLE
-#define FLASH_SECTORS_TO_BE_PROTECTED    OB_WRP_AllPages
-#endif
 
 #endif /* __MAIN_H */
 

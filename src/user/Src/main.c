@@ -16,35 +16,13 @@
  * INCLUDES
  */
 #include "main.h"
-
-typedef void(*func)(void);
-	
-/***************************************************************************************************
- * PRIVATE FUNCTION
- */
-/***************************************************************************************************
- * @fn      flashProtectionDisable()
- *
- * @brief   disable the flash section protection.
- *          disable all the section.
- *
- * @author  yan zeyu
- *
- * @param   destination: the address to be written into.
- * 					p_source:    word array to be written.
- *          wordsLength: the length of the array.
- * @return  state of option
- */
+#include "appConfig.h"
+#include "clock.h"
+#include "led.h"
+#include "stm32l0538_discovery.h"
 
 
-#define FUNC_ADDR 0x8000100
-
-int FUCK  __attribute__((section("APP1_Led_Toggle")));
-
-static void LedToggle(void);
-void LedToggle(void) {
-    BSP_LED_Toggle(LED3);
-}
+uint32_t timetick;
 
 /***************************************************************************************************
  * MAIN FUNCTION
@@ -62,27 +40,28 @@ void LedToggle(void) {
  *          wordsLength: the length of the array.
  * @return  state of option
  */
+Led_t *led;
+moduleDesc_t *desc_t; 
 int main(void)
 {
+    desc_t = (moduleDesc_t*)(DESC_RO_Base);   
+    led = (Led_t*)desc_t->module[MODULE_ID_LED].entry;
+    
     HAL_Init();
-
-    /* Configure the system clock to have a system clock 2 Mhz */
     clkConfig();
+        
+    led->Init();
+    led->On();
     
-    FUCK = 0;
-
-    /* Disable the flash protection */
-    //flashProtectionDisable();
-  
-    /* bootloader process */
-    //ota();
-    
-    BSP_LED_Init(LED3);
+    timetick = HAL_GetTick();
+    while (1) {
+        //HAL_Delay(2000);
+        if ((HAL_GetTick() - timetick) > 1000) {
+            led->Toggle();
+            timetick = HAL_GetTick();
+        }
+        
  
-    
-    while (1) {  
-        LedToggle();
-        HAL_Delay(1000);    
     }
 }
 
