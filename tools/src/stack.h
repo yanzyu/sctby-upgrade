@@ -15,6 +15,7 @@ typedef unsigned short uint16_t;
 typedef unsigned int uint32_t;
 
 #define REALLOC_COEF 2
+#define BUFFER_SIZE  128
 
 typedef enum {
     FALSE = 0,
@@ -29,7 +30,7 @@ typedef struct {
 
 BOOL StackInit(Stack_t *stack, uint32_t size );
 void StackClose(Stack_t *stack);
-BOOL StackPush(Stack_t *stack, uint8_t data);
+BOOL StackPush(Stack_t *stack, uint8_t *buf, uint32_t len);
 uint8_t StackPop(Stack_t *stack);
 
 #endif
