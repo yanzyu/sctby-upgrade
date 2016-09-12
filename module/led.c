@@ -1,4 +1,5 @@
 #include "appConfig.h"
+#include "scatterConfig.h"
 #include "led.h"
 #include "stm32l0xx.h"
 
