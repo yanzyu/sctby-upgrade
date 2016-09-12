@@ -1,0 +1,27 @@
+--cpu Cortex-M0+
+".\app_obj\stm32l0xx_hal.o"
+".\app_obj\stm32l0xx_hal_cortex.o"
+".\app_obj\stm32l0xx_hal_dma.o"
+".\app_obj\stm32l0xx_hal_gpio.o"
+".\app_obj\stm32l0xx_hal_pwr.o"
+".\app_obj\stm32l0xx_hal_pwr_ex.o"
+".\app_obj\stm32l0xx_hal_rcc.o"
+".\app_obj\stm32l0xx_hal_rcc_ex.o"
+".\app_obj\stm32l0xx_hal_rtc.o"
+".\app_obj\stm32l0xx_hal_rtc_ex.o"
+".\app_obj\clock.o"
+".\app_obj\stop.o"
+".\app_obj\uart.o"
+".\app_obj\jump.o"
+".\app_obj\app_main.o"
+".\app_obj\stm32l0xx_hal_msp.o"
+".\app_obj\stm32l0xx_it.o"
+".\app_obj\system_stm32l0xx.o"
+".\app_obj\startup_stm32l053xx.o"
+".\app_obj\appconfig.o"
+".\app_obj\led.o"
+".\app_obj\bsw.o"
+--library_type=microlib --strict --scatter "..\src\appConfig\bootScatter.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\app_obj\application.map" -o .\app_obj\application.axf

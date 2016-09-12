@@ -1,5 +1,6 @@
 
 #include "appConfig.h"
+#include "scatterConfig.h"
 
 const moduleInfo_t moduleTab[MODULE_ID_COUNT] = {
     { INIT_RO_Base,    INIT_RO_Size,  ((INIT_Ver_MAJOR << 8) | INIT_Ver_MINOR)    },
