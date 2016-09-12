@@ -60,8 +60,6 @@ int main(void)
             led->Toggle();
             timetick = HAL_GetTick();
         }
-        
- 
     }
 }
 
