@@ -29,9 +29,9 @@
 ******************************************************************************/
 /* module section address define */
 #define INIT_RO_Base       0x08003000
-#define INIT_RO_End        0x08003200
+#define INIT_RO_End        0x08003300
 #define INIT_RW_Base       0x20000000
-#define INIT_RW_End        0x20000000
+#define INIT_RW_End        0x20000100
 #define INIT_RO_Size       (INIT_RO_End - INIT_RO_Base)
 #define INIT_RW_Size       (INIT_RW_End - INIT_RW_Base)
 
@@ -55,10 +55,10 @@
 
 ******************************************************************************/
 /* module section address define */
-#define DESC_RO_Base     0x08003200
-#define DESC_RO_End      0x08003300
-#define DESC_RW_Base     0x20000000
-#define DESC_RW_End      0x20000000
+#define DESC_RO_Base     0x08003300
+#define DESC_RO_End      0x08003400
+#define DESC_RW_Base     0x20000100
+#define DESC_RW_End      0x20000100
 #define DESC_RO_Size     (DESC_RO_End - DESC_RO_Base)
 #define DESC_RW_Size     (DESC_RW_End - DESC_RW_Base)
 #if (DESC_RO_Base < INIT_END)
@@ -84,9 +84,9 @@
 
 ******************************************************************************/
 /* module section address define */
-#define BSW_RO_Base     0x08003300
-#define BSW_RO_End      0x08004300
-#define BSW_RW_Base     0x20000000
+#define BSW_RO_Base     0x08003400
+#define BSW_RO_End      0x08004400
+#define BSW_RW_Base     0x20000100
 #define BSW_RW_End      0x20001000
 #define BSW_RO_Size     (BSW_RO_End - BSW_RO_Base)
 #define BSW_RW_Size     (BSW_RW_End - BSW_RW_Base)
@@ -107,8 +107,8 @@
 
 ******************************************************************************/
 /* module section address define */
-#define LED_RO_Base     0x08004300
-#define LED_RO_End      0x08004400
+#define LED_RO_Base     0x08004400
+#define LED_RO_End      0x08004500
 #define LED_RW_Base     0x20001000
 #define LED_RW_End      0x20001000
 #define LED_RO_Size     (LED_RO_End - LED_RO_Base)

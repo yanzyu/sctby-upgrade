@@ -114,13 +114,20 @@ Section Cross References
     stop.o(i.wakeUpDisable) refers to stop.o(.bss) for .bss
     stop.o(i.wakeUpTimeIRQHandler) refers to stm32l0xx_hal_rtc_ex.o(i.HAL_RTCEx_WakeUpTimerIRQHandler) for HAL_RTCEx_WakeUpTimerIRQHandler
     stop.o(i.wakeUpTimeIRQHandler) refers to stop.o(.bss) for .bss
+    uart.o(i.DeinitUart1) refers to uart.o(i.NVIC_DisableIRQ) for NVIC_DisableIRQ
     uart.o(i.USART1_IRQHandler) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    uart.o(i.USART1_IRQHandler) refers to uart.o(i.NVIC_DisableIRQ) for NVIC_DisableIRQ
     uart.o(i.USART1_IRQHandler) refers to uart.o(.data) for .data
     uart.o(i.uartReceive_Pkt) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
     uart.o(i.uartReceive_Pkt) refers to uart.o(.data) for .data
+    uart.o(i.uartSendString) refers to uart.o(.data) for .data
     uart.o(i.uartSend_IT) refers to uart.o(.data) for .data
     jump.o(i.jump) refers to jump.o(.data) for .data
+    app_main.o(i.delayMs) refers to app_main.o(.data) for .data
+    app_main.o(i.main) refers to app_main.o(i.delayMs) for delayMs
+    app_main.o(i.main) refers to app_main.o(i.num2str) for num2str
     app_main.o(i.main) refers to app_main.o(.data) for .data
+    app_main.o(i.num2str) refers to app_main.o(.bss) for .bss
     stm32l0xx_it.o(i.RTC_IRQHandler) refers to stop.o(i.wakeUpTimeIRQHandler) for wakeUpTimeIRQHandler
     stm32l0xx_it.o(i.SysTick_Handler) refers to stm32l0xx_hal.o(i.HAL_IncTick) for HAL_IncTick
     system_stm32l0xx.o(i.SystemCoreClockUpdate) refers to uidiv.o(.text) for __aeabi_uidivmod
@@ -137,18 +144,19 @@ Section Cross References
     startup_stm32l053xx.o(RESET) refers to uart.o(i.USART1_IRQHandler) for USART1_IRQHandler
     startup_stm32l053xx.o(.text) refers to system_stm32l0xx.o(i.SystemInit) for SystemInit
     startup_stm32l053xx.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
-    appconfig.o(.ARM.__AT_0x08003200) refers to appconfig.o(.constdata) for moduleTab
-    led.o(.ARM.__AT_0x08004300) refers to led.o(i.ledInit) for ledInit
-    led.o(.ARM.__AT_0x08004300) refers to led.o(i.ledOn) for ledOn
-    led.o(.ARM.__AT_0x08004300) refers to led.o(i.ledOff) for ledOff
-    led.o(.ARM.__AT_0x08004300) refers to led.o(i.ledToggle) for ledToggle
+    appconfig.o(.ARM.__AT_0x08003300) refers to appconfig.o(.constdata) for moduleTab
+    led.o(.ARM.__AT_0x08004400) refers to led.o(i.ledInit) for ledInit
+    led.o(.ARM.__AT_0x08004400) refers to led.o(i.ledOn) for ledOn
+    led.o(.ARM.__AT_0x08004400) refers to led.o(i.ledOff) for ledOff
+    led.o(.ARM.__AT_0x08004400) refers to led.o(i.ledToggle) for ledToggle
     bsw.o(i.HalInit) refers to stm32l0xx_hal.o(i.HAL_Init) for HAL_Init
-    bsw.o(.ARM.__AT_0x08003300) refers to bsw.o(i.HalInit) for HalInit
-    bsw.o(.ARM.__AT_0x08003300) refers to clock.o(i.clkConfig) for clkConfig
-    bsw.o(.ARM.__AT_0x08003300) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
-    bsw.o(.ARM.__AT_0x08003300) refers to uart.o(i.InitUart1) for InitUart1
-    bsw.o(.ARM.__AT_0x08003300) refers to uart.o(i.uartSend_IT) for uartSend_IT
-    bsw.o(.ARM.__AT_0x08003300) refers to uart.o(i.uartReceive_Pkt) for uartReceive_Pkt
+    bsw.o(.ARM.__AT_0x08003400) refers to bsw.o(i.HalInit) for HalInit
+    bsw.o(.ARM.__AT_0x08003400) refers to clock.o(i.clkConfig) for clkConfig
+    bsw.o(.ARM.__AT_0x08003400) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    bsw.o(.ARM.__AT_0x08003400) refers to uart.o(i.InitUart1) for InitUart1
+    bsw.o(.ARM.__AT_0x08003400) refers to uart.o(i.uartSend_IT) for uartSend_IT
+    bsw.o(.ARM.__AT_0x08003400) refers to uart.o(i.uartSendString) for uartSendString
+    bsw.o(.ARM.__AT_0x08003400) refers to uart.o(i.uartReceive_Pkt) for uartReceive_Pkt
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -352,6 +360,7 @@ Removing Unused input sections from the image.
     Removing stop.o(i.wakeUpDisable), (20 bytes).
     Removing uart.o(.rev16_text), (4 bytes).
     Removing uart.o(.revsh_text), (4 bytes).
+    Removing uart.o(i.DeinitUart1), (56 bytes).
     Removing jump.o(.rev16_text), (4 bytes).
     Removing jump.o(.revsh_text), (4 bytes).
     Removing jump.o(i.jump), (20 bytes).
@@ -371,7 +380,7 @@ Removing Unused input sections from the image.
     Removing bsw.o(.rev16_text), (4 bytes).
     Removing bsw.o(.revsh_text), (4 bytes).
 
-200 unused section(s) (total 12121 bytes) removed from the image.
+201 unused section(s) (total 12177 bytes) removed from the image.
 
 ==============================================================================
 
@@ -382,18 +391,18 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ..\\module\\bsw.c                        0x00000000   Number         0  bsw.o ABSOLUTE
     ..\\module\\led.c                        0x00000000   Number         0  led.o ABSOLUTE
@@ -455,58 +464,64 @@ Image Symbol Table
     i.__scatterload_copy                     0x080030f8   Section       14  handlers.o(i.__scatterload_copy)
     i.__scatterload_null                     0x08003106   Section        2  handlers.o(i.__scatterload_null)
     i.__scatterload_zeroinit                 0x08003108   Section       14  handlers.o(i.__scatterload_zeroinit)
-    .ARM.__AT_0x08003200                     0x08003200   Section        8  appconfig.o(.ARM.__AT_0x08003200)
-    .constdata                               0x08003208   Section       48  appconfig.o(.constdata)
-    .ARM.__AT_0x08003300                     0x08003300   Section       24  bsw.o(.ARM.__AT_0x08003300)
-    .text                                    0x08003318   Section       32  startup_stm32l053xx.o(.text)
-    .text                                    0x08003338   Section        0  uidiv.o(.text)
-    i.DebugMon_Handler                       0x08003364   Section        0  stm32l0xx_it.o(i.DebugMon_Handler)
-    i.HAL_GetTick                            0x08003368   Section        0  stm32l0xx_hal.o(i.HAL_GetTick)
-    i.HAL_IncTick                            0x08003374   Section        0  stm32l0xx_hal.o(i.HAL_IncTick)
-    i.HAL_Init                               0x08003384   Section        0  stm32l0xx_hal.o(i.HAL_Init)
-    i.HAL_InitTick                           0x080033ac   Section        0  stm32l0xx_hal.o(i.HAL_InitTick)
-    i.HAL_MspInit                            0x080033ce   Section        0  stm32l0xx_hal.o(i.HAL_MspInit)
-    i.HAL_NVIC_SetPriority                   0x080033d0   Section        0  stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority)
-    i.HAL_RCC_ClockConfig                    0x080033d8   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig)
-    i.HAL_RCC_GetHCLKFreq                    0x080035dc   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq)
-    i.HAL_RCC_GetOscConfig                   0x08003604   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetOscConfig)
-    i.HAL_RCC_GetSysClockFreq                0x080036c4   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq)
-    i.HAL_RCC_OscConfig                      0x08003748   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig)
-    i.HAL_RTCEx_WakeUpTimerEventCallback     0x08003b70   Section        0  stop.o(i.HAL_RTCEx_WakeUpTimerEventCallback)
-    i.HAL_RTCEx_WakeUpTimerIRQHandler        0x08003b80   Section        0  stm32l0xx_hal_rtc_ex.o(i.HAL_RTCEx_WakeUpTimerIRQHandler)
-    i.HAL_SYSTICK_Config                     0x08003bb8   Section        0  stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config)
-    i.HalInit                                0x08003be8   Section        0  bsw.o(i.HalInit)
-    i.HardFault_Handler                      0x08003bf0   Section        0  stm32l0xx_it.o(i.HardFault_Handler)
-    i.InitUart1                              0x08003bf4   Section        0  uart.o(i.InitUart1)
-    i.NMI_Handler                            0x08003c6c   Section        0  stm32l0xx_it.o(i.NMI_Handler)
-    i.NVIC_SetPriority                       0x08003c70   Section        0  stm32l0xx_hal_cortex.o(i.NVIC_SetPriority)
-    NVIC_SetPriority                         0x08003c71   Thumb Code    60  stm32l0xx_hal_cortex.o(i.NVIC_SetPriority)
-    i.PendSV_Handler                         0x08003cb4   Section        0  stm32l0xx_it.o(i.PendSV_Handler)
-    i.RTC_IRQHandler                         0x08003cb6   Section        0  stm32l0xx_it.o(i.RTC_IRQHandler)
-    i.SVC_Handler                            0x08003cbe   Section        0  stm32l0xx_it.o(i.SVC_Handler)
-    i.SysTick_Handler                        0x08003cc0   Section        0  stm32l0xx_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x08003cc8   Section        0  system_stm32l0xx.o(i.SystemInit)
-    i.USART1_IRQHandler                      0x08003d20   Section        0  uart.o(i.USART1_IRQHandler)
-    i.clkConfig                              0x08003d90   Section        0  clock.o(i.clkConfig)
-    i.main                                   0x08003df8   Section        0  app_main.o(i.main)
-    i.uartReceive_Pkt                        0x08003e4c   Section        0  uart.o(i.uartReceive_Pkt)
-    i.uartSend_IT                            0x08003e90   Section        0  uart.o(i.uartSend_IT)
-    i.wakeUpTimeIRQHandler                   0x08003ec0   Section        0  stop.o(i.wakeUpTimeIRQHandler)
-    .constdata                               0x08003ed0   Section       25  stm32l0xx_hal_rcc.o(.constdata)
-    PLLMulTable                              0x08003ed0   Data           9  stm32l0xx_hal_rcc.o(.constdata)
-    APBAHBPrescTable                         0x08003ed9   Data          16  stm32l0xx_hal_rcc.o(.constdata)
-    .ARM.__AT_0x08004300                     0x08004300   Section       16  led.o(.ARM.__AT_0x08004300)
-    i.ledInit                                0x08004310   Section        0  led.o(i.ledInit)
-    i.ledOff                                 0x0800434c   Section        0  led.o(i.ledOff)
-    i.ledOn                                  0x08004358   Section        0  led.o(i.ledOn)
-    i.ledToggle                              0x08004364   Section        0  led.o(i.ledToggle)
-    .data                                    0x20000000   Section        4  stm32l0xx_hal.o(.data)
-    uwTick                                   0x20000000   Data           4  stm32l0xx_hal.o(.data)
-    .data                                    0x20000004   Section       28  uart.o(.data)
-    .data                                    0x20000020   Section        4  app_main.o(.data)
-    .data                                    0x20000024   Section       29  system_stm32l0xx.o(.data)
-    .bss                                     0x20000044   Section       36  stop.o(.bss)
-    STACK                                    0x20000068   Section     1024  startup_stm32l053xx.o(STACK)
+    i.delayMs                                0x08003118   Section        0  app_main.o(i.delayMs)
+    i.main                                   0x08003138   Section        0  app_main.o(i.main)
+    i.num2str                                0x08003214   Section        0  app_main.o(i.num2str)
+    .ARM.__AT_0x08003300                     0x08003300   Section       12  appconfig.o(.ARM.__AT_0x08003300)
+    .constdata                               0x0800330c   Section       64  appconfig.o(.constdata)
+    .ARM.__AT_0x08003400                     0x08003400   Section       28  bsw.o(.ARM.__AT_0x08003400)
+    .text                                    0x0800341c   Section       32  startup_stm32l053xx.o(.text)
+    .text                                    0x0800343c   Section        0  uidiv.o(.text)
+    i.DebugMon_Handler                       0x08003468   Section        0  stm32l0xx_it.o(i.DebugMon_Handler)
+    i.HAL_GetTick                            0x0800346c   Section        0  stm32l0xx_hal.o(i.HAL_GetTick)
+    i.HAL_IncTick                            0x08003478   Section        0  stm32l0xx_hal.o(i.HAL_IncTick)
+    i.HAL_Init                               0x08003488   Section        0  stm32l0xx_hal.o(i.HAL_Init)
+    i.HAL_InitTick                           0x080034b0   Section        0  stm32l0xx_hal.o(i.HAL_InitTick)
+    i.HAL_MspInit                            0x080034d2   Section        0  stm32l0xx_hal.o(i.HAL_MspInit)
+    i.HAL_NVIC_SetPriority                   0x080034d4   Section        0  stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority)
+    i.HAL_RCC_ClockConfig                    0x080034dc   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig)
+    i.HAL_RCC_GetHCLKFreq                    0x080036e0   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq)
+    i.HAL_RCC_GetOscConfig                   0x08003708   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetOscConfig)
+    i.HAL_RCC_GetSysClockFreq                0x080037c8   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq)
+    i.HAL_RCC_OscConfig                      0x0800384c   Section        0  stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig)
+    i.HAL_RTCEx_WakeUpTimerEventCallback     0x08003c74   Section        0  stop.o(i.HAL_RTCEx_WakeUpTimerEventCallback)
+    i.HAL_RTCEx_WakeUpTimerIRQHandler        0x08003c84   Section        0  stm32l0xx_hal_rtc_ex.o(i.HAL_RTCEx_WakeUpTimerIRQHandler)
+    i.HAL_SYSTICK_Config                     0x08003cbc   Section        0  stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config)
+    i.HalInit                                0x08003cec   Section        0  bsw.o(i.HalInit)
+    i.HardFault_Handler                      0x08003cf4   Section        0  stm32l0xx_it.o(i.HardFault_Handler)
+    i.InitUart1                              0x08003cf8   Section        0  uart.o(i.InitUart1)
+    i.NMI_Handler                            0x08003d70   Section        0  stm32l0xx_it.o(i.NMI_Handler)
+    i.NVIC_DisableIRQ                        0x08003d74   Section        0  uart.o(i.NVIC_DisableIRQ)
+    NVIC_DisableIRQ                          0x08003d75   Thumb Code    18  uart.o(i.NVIC_DisableIRQ)
+    i.NVIC_SetPriority                       0x08003d8c   Section        0  stm32l0xx_hal_cortex.o(i.NVIC_SetPriority)
+    NVIC_SetPriority                         0x08003d8d   Thumb Code    60  stm32l0xx_hal_cortex.o(i.NVIC_SetPriority)
+    i.PendSV_Handler                         0x08003dd0   Section        0  stm32l0xx_it.o(i.PendSV_Handler)
+    i.RTC_IRQHandler                         0x08003dd2   Section        0  stm32l0xx_it.o(i.RTC_IRQHandler)
+    i.SVC_Handler                            0x08003dda   Section        0  stm32l0xx_it.o(i.SVC_Handler)
+    i.SysTick_Handler                        0x08003ddc   Section        0  stm32l0xx_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x08003de4   Section        0  system_stm32l0xx.o(i.SystemInit)
+    i.USART1_IRQHandler                      0x08003e3c   Section        0  uart.o(i.USART1_IRQHandler)
+    i.clkConfig                              0x08003ea8   Section        0  clock.o(i.clkConfig)
+    i.uartReceive_Pkt                        0x08003f10   Section        0  uart.o(i.uartReceive_Pkt)
+    i.uartSendString                         0x08003f54   Section        0  uart.o(i.uartSendString)
+    i.uartSend_IT                            0x08003f90   Section        0  uart.o(i.uartSend_IT)
+    i.wakeUpTimeIRQHandler                   0x08003fc0   Section        0  stop.o(i.wakeUpTimeIRQHandler)
+    .constdata                               0x08003fd0   Section       25  stm32l0xx_hal_rcc.o(.constdata)
+    PLLMulTable                              0x08003fd0   Data           9  stm32l0xx_hal_rcc.o(.constdata)
+    APBAHBPrescTable                         0x08003fd9   Data          16  stm32l0xx_hal_rcc.o(.constdata)
+    .ARM.__AT_0x08004400                     0x08004400   Section       16  led.o(.ARM.__AT_0x08004400)
+    i.ledInit                                0x08004410   Section        0  led.o(i.ledInit)
+    i.ledOff                                 0x0800444c   Section        0  led.o(i.ledOff)
+    i.ledOn                                  0x08004458   Section        0  led.o(i.ledOn)
+    i.ledToggle                              0x08004464   Section        0  led.o(i.ledToggle)
+    .data                                    0x20000000   Section       12  app_main.o(.data)
+    .bss                                     0x2000000c   Section        9  app_main.o(.bss)
+    .data                                    0x20000100   Section        4  stm32l0xx_hal.o(.data)
+    uwTick                                   0x20000100   Data           4  stm32l0xx_hal.o(.data)
+    .data                                    0x20000104   Section       28  uart.o(.data)
+    .data                                    0x20000120   Section       29  system_stm32l0xx.o(.data)
+    .bss                                     0x20000140   Section       36  stop.o(.bss)
+    STACK                                    0x20000168   Section     1024  startup_stm32l053xx.o(STACK)
 
     Global Symbols
 
@@ -536,89 +551,95 @@ Image Symbol Table
     __scatterload_copy                       0x080030f9   Thumb Code    14  handlers.o(i.__scatterload_copy)
     __scatterload_null                       0x08003107   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08003109   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x08003118   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003138   Number         0  anon$$obj.o(Region$$Table)
-    desc                                     0x08003200   Data           8  appconfig.o(.ARM.__AT_0x08003200)
-    moduleTab                                0x08003208   Data          48  appconfig.o(.constdata)
-    Bsw                                      0x08003300   Data          24  bsw.o(.ARM.__AT_0x08003300)
-    Reset_Handler                            0x08003319   Thumb Code     8  startup_stm32l053xx.o(.text)
-    ADC1_COMP_IRQHandler                     0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    DMA1_Channel1_IRQHandler                 0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    DMA1_Channel2_3_IRQHandler               0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    DMA1_Channel4_5_6_7_IRQHandler           0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    EXTI0_1_IRQHandler                       0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    EXTI2_3_IRQHandler                       0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    EXTI4_15_IRQHandler                      0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    FLASH_IRQHandler                         0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    I2C1_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    I2C2_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    LCD_IRQHandler                           0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    LPTIM1_IRQHandler                        0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    PVD_IRQHandler                           0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    RCC_CRS_IRQHandler                       0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    RNG_LPUART1_IRQHandler                   0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    SPI1_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    SPI2_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    TIM21_IRQHandler                         0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    TIM22_IRQHandler                         0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    TIM2_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    TIM6_DAC_IRQHandler                      0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    TSC_IRQHandler                           0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    USART2_IRQHandler                        0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    USB_IRQHandler                           0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    WWDG_IRQHandler                          0x0800332d   Thumb Code     0  startup_stm32l053xx.o(.text)
-    __aeabi_uidiv                            0x08003339   Thumb Code     0  uidiv.o(.text)
-    __aeabi_uidivmod                         0x08003339   Thumb Code    44  uidiv.o(.text)
-    DebugMon_Handler                         0x08003365   Thumb Code     2  stm32l0xx_it.o(i.DebugMon_Handler)
-    HAL_GetTick                              0x08003369   Thumb Code     6  stm32l0xx_hal.o(i.HAL_GetTick)
-    HAL_IncTick                              0x08003375   Thumb Code    10  stm32l0xx_hal.o(i.HAL_IncTick)
-    HAL_Init                                 0x08003385   Thumb Code    34  stm32l0xx_hal.o(i.HAL_Init)
-    HAL_InitTick                             0x080033ad   Thumb Code    34  stm32l0xx_hal.o(i.HAL_InitTick)
-    HAL_MspInit                              0x080033cf   Thumb Code     2  stm32l0xx_hal.o(i.HAL_MspInit)
-    HAL_NVIC_SetPriority                     0x080033d1   Thumb Code     8  stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority)
-    HAL_RCC_ClockConfig                      0x080033d9   Thumb Code   502  stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig)
-    HAL_RCC_GetHCLKFreq                      0x080035dd   Thumb Code    26  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq)
-    HAL_RCC_GetOscConfig                     0x08003605   Thumb Code   186  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetOscConfig)
-    HAL_RCC_GetSysClockFreq                  0x080036c5   Thumb Code   108  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq)
-    HAL_RCC_OscConfig                        0x08003749   Thumb Code  1064  stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig)
-    HAL_RTCEx_WakeUpTimerEventCallback       0x08003b71   Thumb Code    12  stop.o(i.HAL_RTCEx_WakeUpTimerEventCallback)
-    HAL_RTCEx_WakeUpTimerIRQHandler          0x08003b81   Thumb Code    48  stm32l0xx_hal_rtc_ex.o(i.HAL_RTCEx_WakeUpTimerIRQHandler)
-    HAL_SYSTICK_Config                       0x08003bb9   Thumb Code    38  stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config)
-    HalInit                                  0x08003be9   Thumb Code     8  bsw.o(i.HalInit)
-    HardFault_Handler                        0x08003bf1   Thumb Code     2  stm32l0xx_it.o(i.HardFault_Handler)
-    InitUart1                                0x08003bf5   Thumb Code   100  uart.o(i.InitUart1)
-    NMI_Handler                              0x08003c6d   Thumb Code     2  stm32l0xx_it.o(i.NMI_Handler)
-    PendSV_Handler                           0x08003cb5   Thumb Code     2  stm32l0xx_it.o(i.PendSV_Handler)
-    RTC_IRQHandler                           0x08003cb7   Thumb Code     8  stm32l0xx_it.o(i.RTC_IRQHandler)
-    SVC_Handler                              0x08003cbf   Thumb Code     2  stm32l0xx_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x08003cc1   Thumb Code     8  stm32l0xx_it.o(i.SysTick_Handler)
-    SystemInit                               0x08003cc9   Thumb Code    66  system_stm32l0xx.o(i.SystemInit)
-    USART1_IRQHandler                        0x08003d21   Thumb Code    98  uart.o(i.USART1_IRQHandler)
-    clkConfig                                0x08003d91   Thumb Code    96  clock.o(i.clkConfig)
-    main                                     0x08003df9   Thumb Code    68  app_main.o(i.main)
-    uartReceive_Pkt                          0x08003e4d   Thumb Code    64  uart.o(i.uartReceive_Pkt)
-    uartSend_IT                              0x08003e91   Thumb Code    40  uart.o(i.uartSend_IT)
-    wakeUpTimeIRQHandler                     0x08003ec1   Thumb Code    10  stop.o(i.wakeUpTimeIRQHandler)
-    Led                                      0x08004300   Data          16  led.o(.ARM.__AT_0x08004300)
-    ledInit                                  0x08004311   Thumb Code    52  led.o(i.ledInit)
-    ledOff                                   0x0800434d   Thumb Code     8  led.o(i.ledOff)
-    ledOn                                    0x08004359   Thumb Code     8  led.o(i.ledOn)
-    ledToggle                                0x08004365   Thumb Code    12  led.o(i.ledToggle)
-    RxFlag                                   0x20000004   Data           1  uart.o(.data)
-    TxFlag                                   0x20000005   Data           1  uart.o(.data)
-    Err                                      0x20000006   Data           1  uart.o(.data)
-    pRX                                      0x20000008   Data           4  uart.o(.data)
-    pTX                                      0x2000000c   Data           4  uart.o(.data)
-    RxCnt                                    0x20000010   Data           4  uart.o(.data)
-    RxTick                                   0x20000014   Data           4  uart.o(.data)
-    TxCnt                                    0x20000018   Data           4  uart.o(.data)
-    TxNum                                    0x2000001c   Data           4  uart.o(.data)
-    timetick                                 0x20000020   Data           4  app_main.o(.data)
-    SystemCoreClock                          0x20000024   Data           4  system_stm32l0xx.o(.data)
-    AHBPrescTable                            0x20000028   Data          16  system_stm32l0xx.o(.data)
-    PLLMulTable                              0x20000038   Data           9  system_stm32l0xx.o(.data)
-    RtcHandle                                0x20000044   Data          36  stop.o(.bss)
-    __initial_sp                             0x20000468   Data           0  startup_stm32l053xx.o(STACK)
+    delayMs                                  0x08003119   Thumb Code    28  app_main.o(i.delayMs)
+    main                                     0x08003139   Thumb Code   166  app_main.o(i.main)
+    num2str                                  0x08003215   Thumb Code    40  app_main.o(i.num2str)
+    Region$$Table$$Base                      0x08003240   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003280   Number         0  anon$$obj.o(Region$$Table)
+    desc                                     0x08003300   Data          12  appconfig.o(.ARM.__AT_0x08003300)
+    moduleTab                                0x0800330c   Data          64  appconfig.o(.constdata)
+    Bsw                                      0x08003400   Data          28  bsw.o(.ARM.__AT_0x08003400)
+    Reset_Handler                            0x0800341d   Thumb Code     8  startup_stm32l053xx.o(.text)
+    ADC1_COMP_IRQHandler                     0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    DMA1_Channel1_IRQHandler                 0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    DMA1_Channel2_3_IRQHandler               0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    DMA1_Channel4_5_6_7_IRQHandler           0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    EXTI0_1_IRQHandler                       0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    EXTI2_3_IRQHandler                       0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    EXTI4_15_IRQHandler                      0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    FLASH_IRQHandler                         0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    I2C1_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    I2C2_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    LCD_IRQHandler                           0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    LPTIM1_IRQHandler                        0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    PVD_IRQHandler                           0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    RCC_CRS_IRQHandler                       0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    RNG_LPUART1_IRQHandler                   0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    SPI1_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    SPI2_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    TIM21_IRQHandler                         0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    TIM22_IRQHandler                         0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    TIM2_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    TIM6_DAC_IRQHandler                      0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    TSC_IRQHandler                           0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    USART2_IRQHandler                        0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    USB_IRQHandler                           0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    WWDG_IRQHandler                          0x08003431   Thumb Code     0  startup_stm32l053xx.o(.text)
+    __aeabi_uidiv                            0x0800343d   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x0800343d   Thumb Code    44  uidiv.o(.text)
+    DebugMon_Handler                         0x08003469   Thumb Code     2  stm32l0xx_it.o(i.DebugMon_Handler)
+    HAL_GetTick                              0x0800346d   Thumb Code     6  stm32l0xx_hal.o(i.HAL_GetTick)
+    HAL_IncTick                              0x08003479   Thumb Code    10  stm32l0xx_hal.o(i.HAL_IncTick)
+    HAL_Init                                 0x08003489   Thumb Code    34  stm32l0xx_hal.o(i.HAL_Init)
+    HAL_InitTick                             0x080034b1   Thumb Code    34  stm32l0xx_hal.o(i.HAL_InitTick)
+    HAL_MspInit                              0x080034d3   Thumb Code     2  stm32l0xx_hal.o(i.HAL_MspInit)
+    HAL_NVIC_SetPriority                     0x080034d5   Thumb Code     8  stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority)
+    HAL_RCC_ClockConfig                      0x080034dd   Thumb Code   502  stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig)
+    HAL_RCC_GetHCLKFreq                      0x080036e1   Thumb Code    26  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq)
+    HAL_RCC_GetOscConfig                     0x08003709   Thumb Code   186  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetOscConfig)
+    HAL_RCC_GetSysClockFreq                  0x080037c9   Thumb Code   108  stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq)
+    HAL_RCC_OscConfig                        0x0800384d   Thumb Code  1064  stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig)
+    HAL_RTCEx_WakeUpTimerEventCallback       0x08003c75   Thumb Code    12  stop.o(i.HAL_RTCEx_WakeUpTimerEventCallback)
+    HAL_RTCEx_WakeUpTimerIRQHandler          0x08003c85   Thumb Code    48  stm32l0xx_hal_rtc_ex.o(i.HAL_RTCEx_WakeUpTimerIRQHandler)
+    HAL_SYSTICK_Config                       0x08003cbd   Thumb Code    38  stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config)
+    HalInit                                  0x08003ced   Thumb Code     8  bsw.o(i.HalInit)
+    HardFault_Handler                        0x08003cf5   Thumb Code     2  stm32l0xx_it.o(i.HardFault_Handler)
+    InitUart1                                0x08003cf9   Thumb Code   100  uart.o(i.InitUart1)
+    NMI_Handler                              0x08003d71   Thumb Code     2  stm32l0xx_it.o(i.NMI_Handler)
+    PendSV_Handler                           0x08003dd1   Thumb Code     2  stm32l0xx_it.o(i.PendSV_Handler)
+    RTC_IRQHandler                           0x08003dd3   Thumb Code     8  stm32l0xx_it.o(i.RTC_IRQHandler)
+    SVC_Handler                              0x08003ddb   Thumb Code     2  stm32l0xx_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x08003ddd   Thumb Code     8  stm32l0xx_it.o(i.SysTick_Handler)
+    SystemInit                               0x08003de5   Thumb Code    66  system_stm32l0xx.o(i.SystemInit)
+    USART1_IRQHandler                        0x08003e3d   Thumb Code    98  uart.o(i.USART1_IRQHandler)
+    clkConfig                                0x08003ea9   Thumb Code    96  clock.o(i.clkConfig)
+    uartReceive_Pkt                          0x08003f11   Thumb Code    64  uart.o(i.uartReceive_Pkt)
+    uartSendString                           0x08003f55   Thumb Code    50  uart.o(i.uartSendString)
+    uartSend_IT                              0x08003f91   Thumb Code    40  uart.o(i.uartSend_IT)
+    wakeUpTimeIRQHandler                     0x08003fc1   Thumb Code    10  stop.o(i.wakeUpTimeIRQHandler)
+    Led                                      0x08004400   Data          16  led.o(.ARM.__AT_0x08004400)
+    ledInit                                  0x08004411   Thumb Code    52  led.o(i.ledInit)
+    ledOff                                   0x0800444d   Thumb Code     8  led.o(i.ledOff)
+    ledOn                                    0x08004459   Thumb Code     8  led.o(i.ledOn)
+    ledToggle                                0x08004465   Thumb Code    12  led.o(i.ledToggle)
+    desc_t                                   0x20000000   Data           4  app_main.o(.data)
+    bsw                                      0x20000004   Data           4  app_main.o(.data)
+    led                                      0x20000008   Data           4  app_main.o(.data)
+    buf                                      0x2000000c   Data           9  app_main.o(.bss)
+    RxFlag                                   0x20000104   Data           1  uart.o(.data)
+    TxFlag                                   0x20000105   Data           1  uart.o(.data)
+    Err                                      0x20000106   Data           1  uart.o(.data)
+    pRX                                      0x20000108   Data           4  uart.o(.data)
+    pTX                                      0x2000010c   Data           4  uart.o(.data)
+    RxCnt                                    0x20000110   Data           4  uart.o(.data)
+    RxTick                                   0x20000114   Data           4  uart.o(.data)
+    TxCnt                                    0x20000118   Data           4  uart.o(.data)
+    TxNum                                    0x2000011c   Data           4  uart.o(.data)
+    SystemCoreClock                          0x20000120   Data           4  system_stm32l0xx.o(.data)
+    AHBPrescTable                            0x20000124   Data          16  system_stm32l0xx.o(.data)
+    PLLMulTable                              0x20000134   Data           9  system_stm32l0xx.o(.data)
+    RtcHandle                                0x20000140   Data          36  stop.o(.bss)
+    __initial_sp                             0x20000568   Data           0  startup_stm32l053xx.o(STACK)
 
 
 
@@ -628,113 +649,125 @@ Memory Map of the image
 
   Image Entry point : 0x080030c1
 
-  Load Region INIT_ROM (Base: 0x08003000, Size: 0x00000138, Max: 0x00000200, ABSOLUTE)
+  Load Region INIT_ROM (Base: 0x08003000, Size: 0x0000028c, Max: 0x00000300, ABSOLUTE)
 
-    Execution Region ER_IROM (Base: 0x08003000, Size: 0x00000138, Max: 0x00000200, ABSOLUTE)
+    Execution Region INIT_EROM (Base: 0x08003000, Size: 0x00000280, Max: 0x00000300, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08003000   0x000000c0   Data   RO         1548    RESET               startup_stm32l053xx.o
-    0x080030c0   0x00000000   Code   RO         1627  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x080030c0   0x00000004   Code   RO         1632    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x080030c4   0x00000004   Code   RO         1635    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x080030c8   0x00000000   Code   RO         1637    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x080030c8   0x00000000   Code   RO         1639    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x080030c8   0x00000008   Code   RO         1640    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x080030d0   0x00000000   Code   RO         1642    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x080030d0   0x00000000   Code   RO         1644    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x080030d0   0x00000004   Code   RO         1633    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x080030d4   0x00000024   Code   RO         1646    .text               mc_p.l(init.o)
-    0x080030f8   0x0000000e   Code   RO         1650    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x08003106   0x00000002   Code   RO         1651    i.__scatterload_null  mc_p.l(handlers.o)
-    0x08003108   0x0000000e   Code   RO         1652    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08003000   0x000000c0   Data   RO         1577    RESET               startup_stm32l053xx.o
+    0x080030c0   0x00000000   Code   RO         1656  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x080030c0   0x00000004   Code   RO         1661    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x080030c4   0x00000004   Code   RO         1664    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x080030c8   0x00000000   Code   RO         1666    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x080030c8   0x00000000   Code   RO         1668    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x080030c8   0x00000008   Code   RO         1669    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x080030d0   0x00000000   Code   RO         1671    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x080030d0   0x00000000   Code   RO         1673    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x080030d0   0x00000004   Code   RO         1662    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x080030d4   0x00000024   Code   RO         1675    .text               mc_p.l(init.o)
+    0x080030f8   0x0000000e   Code   RO         1679    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08003106   0x00000002   Code   RO         1680    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08003108   0x0000000e   Code   RO         1681    i.__scatterload_zeroinit  mc_p.l(handlers.o)
     0x08003116   0x00000002   PAD
-    0x08003118   0x00000020   Data   RO         1648    Region$$Table       anon$$obj.o
+    0x08003118   0x00000020   Code   RO         1416    i.delayMs           app_main.o
+    0x08003138   0x000000dc   Code   RO         1417    i.main              app_main.o
+    0x08003214   0x0000002c   Code   RO         1418    i.num2str           app_main.o
+    0x08003240   0x00000040   Data   RO         1677    Region$$Table       anon$$obj.o
 
 
-
-  Load Region DESC_LROM (Base: 0x08003200, Size: 0x00000038, Max: 0x00000100, ABSOLUTE)
-
-    Execution Region DESC_EROM (Base: 0x08003200, Size: 0x00000038, Max: 0x00000100, ABSOLUTE)
-
-    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x08003200   0x00000008   Data   RO         1553    .ARM.__AT_0x08003200  appconfig.o
-    0x08003208   0x00000030   Data   RO         1554    .constdata          appconfig.o
-
-
-
-  Load Region BSW_LROM (Base: 0x08003300, Size: 0x00000c30, Max: 0x00001000, ABSOLUTE)
-
-    Execution Region BSW_EROM (Base: 0x08003300, Size: 0x00000bec, Max: 0x00001000, ABSOLUTE)
+    Execution Region INIT_ERAM (Base: 0x20000000, Size: 0x00000018, Max: 0x00000100, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08003300   0x00000018   Data   RO         1607    .ARM.__AT_0x08003300  bsw.o
-    0x08003318   0x00000020   Code   RO         1549    .text               startup_stm32l053xx.o
-    0x08003338   0x0000002c   Code   RO         1630    .text               mc_p.l(uidiv.o)
-    0x08003364   0x00000002   Code   RO         1457    i.DebugMon_Handler  stm32l0xx_it.o
-    0x08003366   0x00000002   PAD
-    0x08003368   0x0000000c   Code   RO           16    i.HAL_GetTick       stm32l0xx_hal.o
-    0x08003374   0x00000010   Code   RO           17    i.HAL_IncTick       stm32l0xx_hal.o
-    0x08003384   0x00000028   Code   RO           18    i.HAL_Init          stm32l0xx_hal.o
-    0x080033ac   0x00000022   Code   RO           19    i.HAL_InitTick      stm32l0xx_hal.o
-    0x080033ce   0x00000002   Code   RO           21    i.HAL_MspInit       stm32l0xx_hal.o
-    0x080033d0   0x00000008   Code   RO          293    i.HAL_NVIC_SetPriority  stm32l0xx_hal_cortex.o
-    0x080033d8   0x00000204   Code   RO          688    i.HAL_RCC_ClockConfig  stm32l0xx_hal_rcc.o
-    0x080035dc   0x00000028   Code   RO          692    i.HAL_RCC_GetHCLKFreq  stm32l0xx_hal_rcc.o
-    0x08003604   0x000000c0   Code   RO          693    i.HAL_RCC_GetOscConfig  stm32l0xx_hal_rcc.o
-    0x080036c4   0x00000084   Code   RO          696    i.HAL_RCC_GetSysClockFreq  stm32l0xx_hal_rcc.o
-    0x08003748   0x00000428   Code   RO          699    i.HAL_RCC_OscConfig  stm32l0xx_hal_rcc.o
-    0x08003b70   0x00000010   Code   RO         1255    i.HAL_RTCEx_WakeUpTimerEventCallback  stop.o
-    0x08003b80   0x00000038   Code   RO         1052    i.HAL_RTCEx_WakeUpTimerIRQHandler  stm32l0xx_hal_rtc_ex.o
-    0x08003bb8   0x00000030   Code   RO          297    i.HAL_SYSTICK_Config  stm32l0xx_hal_cortex.o
-    0x08003be8   0x00000008   Code   RO         1606    i.HalInit           bsw.o
-    0x08003bf0   0x00000002   Code   RO         1458    i.HardFault_Handler  stm32l0xx_it.o
-    0x08003bf2   0x00000002   PAD
-    0x08003bf4   0x00000078   Code   RO         1323    i.InitUart1         uart.o
-    0x08003c6c   0x00000002   Code   RO         1459    i.NMI_Handler       stm32l0xx_it.o
-    0x08003c6e   0x00000002   PAD
-    0x08003c70   0x00000044   Code   RO          299    i.NVIC_SetPriority  stm32l0xx_hal_cortex.o
-    0x08003cb4   0x00000002   Code   RO         1460    i.PendSV_Handler    stm32l0xx_it.o
-    0x08003cb6   0x00000008   Code   RO         1461    i.RTC_IRQHandler    stm32l0xx_it.o
-    0x08003cbe   0x00000002   Code   RO         1462    i.SVC_Handler       stm32l0xx_it.o
-    0x08003cc0   0x00000008   Code   RO         1463    i.SysTick_Handler   stm32l0xx_it.o
-    0x08003cc8   0x00000058   Code   RO         1517    i.SystemInit        system_stm32l0xx.o
-    0x08003d20   0x00000070   Code   RO         1324    i.USART1_IRQHandler  uart.o
-    0x08003d90   0x00000068   Code   RO         1232    i.clkConfig         clock.o
-    0x08003df8   0x00000054   Code   RO         1399    i.main              app_main.o
-    0x08003e4c   0x00000044   Code   RO         1325    i.uartReceive_Pkt   uart.o
-    0x08003e90   0x00000030   Code   RO         1326    i.uartSend_IT       uart.o
-    0x08003ec0   0x00000010   Code   RO         1262    i.wakeUpTimeIRQHandler  stop.o
-    0x08003ed0   0x00000019   Data   RO          700    .constdata          stm32l0xx_hal_rcc.o
+    0x20000000   0x0000000c   Data   RW         1420    .data               app_main.o
+    0x2000000c   0x00000009   Zero   RW         1419    .bss                app_main.o
 
 
-    Execution Region BSW_ERAM (Base: 0x20000000, Size: 0x00000468, Max: 0x00001000, ABSOLUTE)
+
+  Load Region DESC_LROM (Base: 0x08003300, Size: 0x0000004c, Max: 0x00000100, ABSOLUTE)
+
+    Execution Region DESC_EROM (Base: 0x08003300, Size: 0x0000004c, Max: 0x00000100, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000004   Data   RW           30    .data               stm32l0xx_hal.o
-    0x20000004   0x0000001c   Data   RW         1327    .data               uart.o
-    0x20000020   0x00000004   Data   RW         1400    .data               app_main.o
-    0x20000024   0x0000001d   Data   RW         1518    .data               system_stm32l0xx.o
-    0x20000041   0x00000003   PAD
-    0x20000044   0x00000024   Zero   RW         1263    .bss                stop.o
-    0x20000068   0x00000400   Zero   RW         1546    STACK               startup_stm32l053xx.o
+    0x08003300   0x0000000c   Data   RO         1582    .ARM.__AT_0x08003300  appconfig.o
+    0x0800330c   0x00000040   Data   RO         1583    .constdata          appconfig.o
 
 
 
-  Load Region LED_LROM (Base: 0x08004300, Size: 0x00000074, Max: 0x00000100, ABSOLUTE)
+  Load Region BSW_LROM (Base: 0x08003400, Size: 0x00000c2c, Max: 0x00001000, ABSOLUTE)
 
-    Execution Region LED_EROM (Base: 0x08004300, Size: 0x00000074, Max: 0x00000100, ABSOLUTE)
+    Execution Region BSW_EROM (Base: 0x08003400, Size: 0x00000bec, Max: 0x00001000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08004300   0x00000010   Data   RO         1569    .ARM.__AT_0x08004300  led.o
-    0x08004310   0x0000003c   Code   RO         1565    i.ledInit           led.o
-    0x0800434c   0x0000000c   Code   RO         1566    i.ledOff            led.o
-    0x08004358   0x0000000c   Code   RO         1567    i.ledOn             led.o
-    0x08004364   0x00000010   Code   RO         1568    i.ledToggle         led.o
+    0x08003400   0x0000001c   Data   RO         1636    .ARM.__AT_0x08003400  bsw.o
+    0x0800341c   0x00000020   Code   RO         1578    .text               startup_stm32l053xx.o
+    0x0800343c   0x0000002c   Code   RO         1659    .text               mc_p.l(uidiv.o)
+    0x08003468   0x00000002   Code   RO         1486    i.DebugMon_Handler  stm32l0xx_it.o
+    0x0800346a   0x00000002   PAD
+    0x0800346c   0x0000000c   Code   RO           16    i.HAL_GetTick       stm32l0xx_hal.o
+    0x08003478   0x00000010   Code   RO           17    i.HAL_IncTick       stm32l0xx_hal.o
+    0x08003488   0x00000028   Code   RO           18    i.HAL_Init          stm32l0xx_hal.o
+    0x080034b0   0x00000022   Code   RO           19    i.HAL_InitTick      stm32l0xx_hal.o
+    0x080034d2   0x00000002   Code   RO           21    i.HAL_MspInit       stm32l0xx_hal.o
+    0x080034d4   0x00000008   Code   RO          293    i.HAL_NVIC_SetPriority  stm32l0xx_hal_cortex.o
+    0x080034dc   0x00000204   Code   RO          688    i.HAL_RCC_ClockConfig  stm32l0xx_hal_rcc.o
+    0x080036e0   0x00000028   Code   RO          692    i.HAL_RCC_GetHCLKFreq  stm32l0xx_hal_rcc.o
+    0x08003708   0x000000c0   Code   RO          693    i.HAL_RCC_GetOscConfig  stm32l0xx_hal_rcc.o
+    0x080037c8   0x00000084   Code   RO          696    i.HAL_RCC_GetSysClockFreq  stm32l0xx_hal_rcc.o
+    0x0800384c   0x00000428   Code   RO          699    i.HAL_RCC_OscConfig  stm32l0xx_hal_rcc.o
+    0x08003c74   0x00000010   Code   RO         1255    i.HAL_RTCEx_WakeUpTimerEventCallback  stop.o
+    0x08003c84   0x00000038   Code   RO         1052    i.HAL_RTCEx_WakeUpTimerIRQHandler  stm32l0xx_hal_rtc_ex.o
+    0x08003cbc   0x00000030   Code   RO          297    i.HAL_SYSTICK_Config  stm32l0xx_hal_cortex.o
+    0x08003cec   0x00000008   Code   RO         1635    i.HalInit           bsw.o
+    0x08003cf4   0x00000002   Code   RO         1487    i.HardFault_Handler  stm32l0xx_it.o
+    0x08003cf6   0x00000002   PAD
+    0x08003cf8   0x00000078   Code   RO         1324    i.InitUart1         uart.o
+    0x08003d70   0x00000002   Code   RO         1488    i.NMI_Handler       stm32l0xx_it.o
+    0x08003d72   0x00000002   PAD
+    0x08003d74   0x00000018   Code   RO         1325    i.NVIC_DisableIRQ   uart.o
+    0x08003d8c   0x00000044   Code   RO          299    i.NVIC_SetPriority  stm32l0xx_hal_cortex.o
+    0x08003dd0   0x00000002   Code   RO         1489    i.PendSV_Handler    stm32l0xx_it.o
+    0x08003dd2   0x00000008   Code   RO         1490    i.RTC_IRQHandler    stm32l0xx_it.o
+    0x08003dda   0x00000002   Code   RO         1491    i.SVC_Handler       stm32l0xx_it.o
+    0x08003ddc   0x00000008   Code   RO         1492    i.SysTick_Handler   stm32l0xx_it.o
+    0x08003de4   0x00000058   Code   RO         1546    i.SystemInit        system_stm32l0xx.o
+    0x08003e3c   0x0000006c   Code   RO         1326    i.USART1_IRQHandler  uart.o
+    0x08003ea8   0x00000068   Code   RO         1232    i.clkConfig         clock.o
+    0x08003f10   0x00000044   Code   RO         1327    i.uartReceive_Pkt   uart.o
+    0x08003f54   0x0000003c   Code   RO         1328    i.uartSendString    uart.o
+    0x08003f90   0x00000030   Code   RO         1329    i.uartSend_IT       uart.o
+    0x08003fc0   0x00000010   Code   RO         1262    i.wakeUpTimeIRQHandler  stop.o
+    0x08003fd0   0x00000019   Data   RO          700    .constdata          stm32l0xx_hal_rcc.o
+
+
+    Execution Region BSW_ERAM (Base: 0x20000100, Size: 0x00000468, Max: 0x00000f00, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000100   0x00000004   Data   RW           30    .data               stm32l0xx_hal.o
+    0x20000104   0x0000001c   Data   RW         1330    .data               uart.o
+    0x20000120   0x0000001d   Data   RW         1547    .data               system_stm32l0xx.o
+    0x2000013d   0x00000003   PAD
+    0x20000140   0x00000024   Zero   RW         1263    .bss                stop.o
+    0x20000164   0x00000004   PAD
+    0x20000168   0x00000400   Zero   RW         1575    STACK               startup_stm32l053xx.o
+
+
+
+  Load Region LED_LROM (Base: 0x08004400, Size: 0x00000074, Max: 0x00000100, ABSOLUTE)
+
+    Execution Region LED_EROM (Base: 0x08004400, Size: 0x00000074, Max: 0x00000100, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x08004400   0x00000010   Data   RO         1598    .ARM.__AT_0x08004400  led.o
+    0x08004410   0x0000003c   Code   RO         1594    i.ledInit           led.o
+    0x0800444c   0x0000000c   Code   RO         1595    i.ledOff            led.o
+    0x08004458   0x0000000c   Code   RO         1596    i.ledOn             led.o
+    0x08004464   0x00000010   Code   RO         1597    i.ledToggle         led.o
 
 
 ==============================================================================
@@ -744,9 +777,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        84         16          0          4          0       2506   app_main.o
-         0          0         56          0          0        545   appconfig.o
-         8          0         24          0          0        856   bsw.o
+       296         62          0         12          9       3806   app_main.o
+         0          0         76          0          0        545   appconfig.o
+         8          0         28          0          0        856   bsw.o
        104          8          0          0          0        576   clock.o
        100         20         16          0          0       2021   led.o
         32         10        192          0       1024        636   startup_stm32l053xx.o
@@ -757,12 +790,12 @@ Image component sizes
         26          0          0          0          0       2967   stm32l0xx_it.o
         32         10          0          0         36       1372   stop.o
         88         22          0         29          0       1217   system_stm32l0xx.o
-       348         46          0         28          0      11449   uart.o
+       428         58          0         28          0      12298   uart.o
 
     ----------------------------------------------------------------------
-      3056        264        348         68       1060     214956   Object Totals
-         0          0         32          0          0          0   (incl. Generated)
-         6          0          3          3          0          0   (incl. Padding)
+      3348        322        404         76       1076     217105   Object Totals
+         0          0         64          0          0          0   (incl. Generated)
+         6          0          3          3          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -800,15 +833,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3188        280        348         68       1060     213884   Grand Totals
-      3188        280        348         68       1060     213884   ELF Image Totals
-      3188        280        348         68          0          0   ROM Totals
+      3480        338        404         76       1076     215857   Grand Totals
+      3480        338        404         76       1076     215857   ELF Image Totals
+      3480        338        404         76          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3536 (   3.45kB)
-    Total RW  Size (RW Data + ZI Data)              1128 (   1.10kB)
-    Total ROM Size (Code + RO Data + RW Data)       3604 (   3.52kB)
+    Total RO  Size (Code + RO Data)                 3884 (   3.79kB)
+    Total RW  Size (RW Data + ZI Data)              1152 (   1.13kB)
+    Total ROM Size (Code + RO Data + RW Data)       3960 (   3.87kB)
 
 ==============================================================================
 

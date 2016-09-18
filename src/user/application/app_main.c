@@ -21,8 +21,27 @@
 #include "led.h"
 #include "bsw.h"
 
+const moduleDesc_t *desc_t = (moduleDesc_t*)(DESC_RO_Base);
+const Bsw_t *bsw;
+const Led_t *led;
+uint8_t buf[9];    
+  
+void delayMs(uint32_t timeout) {
+    uint32_t timetick = bsw->GetTick();
+    while ((bsw->GetTick() - timetick) < timeout) {
+    }
+}
 
-uint32_t timetick;
+uint8_t *num2str(uint32_t n) {
+    uint8_t i;
+    
+    for (i = 0; i < 8; i++) {
+        buf[i] = ((n >> 4 * (7 - i)) & 0x0f) + 0x30;
+    }
+    buf[8] = '\0';
+        
+    return buf;
+}
 
 /***************************************************************************************************
  * MAIN FUNCTION
@@ -43,27 +62,34 @@ uint32_t timetick;
 
 int main(void)
 {
-    moduleDesc_t *desc_t; 
-    Led_t *led;
-    Bsw_t *bsw;
-    
-    desc_t = (moduleDesc_t*)(DESC_RO_Base);    
-    led = (Led_t*)desc_t->module[MODULE_ID_LED].entry;
+    uint32_t timetick;
+    uint32_t i;
     bsw = (Bsw_t*)desc_t->module[MODULE_ID_BSW].entry;
+    led = (Led_t*)desc_t->module[MODULE_ID_LED].entry;
     
     bsw->HalInit();
     bsw->ClkConfig();
     bsw->Uart1Init();
     
     led->Init();
-    
+
     timetick = bsw->GetTick();
+    while((bsw->GetTick() - timetick) < 2000) {
+        delayMs(100);
+        led->Toggle();
+    }
+    
+    for (i = 0; i < desc_t->moduleCnt; i++) {
+        bsw->UartSendString("\r\nmodule version:  \t0x");
+        bsw->UartSend(num2str(desc_t->module[i].ver), 9);
+        bsw->UartSendString("\r\nmodule crc check:\t0x");
+        bsw->UartSend(num2str(desc_t->module[i].crc), 9);
+    }
+    
+    
     while (1) {
-        if ((bsw->GetTick() - timetick) > 1000) {
-            led->Toggle();
-            bsw->UartSend("hhhh\r\n", 6);
-            timetick = bsw->GetTick();
-        }
+        delayMs(1000);
+        led->Toggle();
     }
 }
 
@@ -73,4 +99,3 @@ int main(void)
 *   context: here write modified history
 *
 ***************************************************************************************************/
->>>>>>> 7a247bd72c95863e788da847370563d82a923df6:src/user/application/app_main.c

@@ -22,6 +22,7 @@ typedef struct {
     /* uart interface */
     void (*Uart1Init)(void);
     uint8_t (*UartSend)(uint8_t *buf, uint32_t n);
+    void (*UartSendString)(uint8_t *string);
     uint32_t (*UartReceive)(uint8_t *buf, uint32_t timeout);
   
 } Bsw_t;    // led type defination

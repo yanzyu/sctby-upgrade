@@ -37,3 +37,4 @@
 .\boot_obj\boot_main.o: ..\src\perpherial\Inc\clock.h
 .\boot_obj\boot_main.o: ..\src\perpherial\Inc\jump.h
 .\boot_obj\boot_main.o: ..\src\perpherial\Inc\stm32l0538_discovery.h
+.\boot_obj\boot_main.o: ..\src\perpherial\Inc\uart.h

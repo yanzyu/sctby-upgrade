@@ -44,6 +44,16 @@ void InitUart1(void) {
     NVIC_EnableIRQ(USART1_IRQn);
 }
 
+void DeinitUart1() {
+    CLEAR_BIT(USART1->CR1, USART_CR1_UE);
+    USART1->CR1 = 0x0;
+    USART1->CR2 = 0x0;
+    USART1->CR3 = 0x0;
+    SET_BIT(RCC->APB2RSTR, (RCC_APB2RSTR_USART1RST));
+    CLEAR_BIT(RCC->APB2RSTR, (RCC_APB2RSTR_USART1RST));
+    NVIC_DisableIRQ(USART1_IRQn);
+}
+
 /**
   * Brief   This function send data in interrupt mode.
   * Param   None
@@ -60,6 +70,22 @@ uint8_t uartSend_IT(uint8_t *buf, uint32_t n) {
     
     while(TxFlag) { }   // wait
     return Err;
+}
+
+void uartSendString(uint8_t *string) {
+    uint8_t cnt = 0;
+    TxCnt = 0;
+    TxFlag = 1;
+    Err = 0;
+    pTX = string;
+    
+    while(string[cnt++] != '\0') { };
+    
+    TxNum = cnt;
+    // start the uart transmit
+    USART1->TDR = string[TxCnt++];
+    
+    while(TxFlag) { }   // wait
 }
 
 /**

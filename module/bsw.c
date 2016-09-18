@@ -10,6 +10,7 @@ const Bsw_t Bsw __attribute__((at(BSW_RO_Base))) = {
     .GetTick    = HAL_GetTick,
     .Uart1Init  = InitUart1,
     .UartSend   = uartSend_IT,
+    .UartSendString = uartSendString,
     .UartReceive    = uartReceive_Pkt
 };
 

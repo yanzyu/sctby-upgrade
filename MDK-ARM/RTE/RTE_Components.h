@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'bootloader' 
- * Target:  'bootloader' 
+ * Project: 'application' 
+ * Target:  'application' 
  */
 
 #ifndef RTE_COMPONENTS_H

@@ -24,7 +24,22 @@
 /***************************************************************************************************
  * MACRO
  */
-#define APP_BASE 0x08003000
+#define APP_BASE    0x08003000
+#define DESC_BASE   0x08003300
+typedef struct{
+    unsigned int entry;
+    unsigned int size;
+    unsigned int ver;   /* use only byte 2 = major, byte 3 = minor */
+    unsigned int crc; /* 似乎没有办法在这里加入crc校验值，因为程序复位后，在初始化阶段应该会将这个值初始化 */
+}moduleInfo_t;  // module info type
+    
+typedef struct{
+    unsigned int firmVer;
+    unsigned int moduleCnt;
+    moduleInfo_t *module;
+}moduleDesc_t;  // module description type
+
+
 
 #endif /* __MAIN_H */
 

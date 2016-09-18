@@ -28,8 +28,10 @@
 #define UartMaxSize 256
 
 void InitUart1(void);
+void DeinitUart1(void);
 uint8_t uartSend_IT(uint8_t *buf, uint32_t n);
 uint32_t uartReceive_Pkt(uint8_t *buf, uint32_t timeout);
+void uartSendString(uint8_t *string);
 
 #endif  /* __UART_H */
 

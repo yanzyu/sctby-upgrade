@@ -37,7 +37,7 @@
  *
  * @return  check result
  */
-uint16_t crcCheck16(uint8_t *dataBuffer, uint32_t length);
+uint16_t crc16(uint8_t *dataBuffer, uint32_t length);
 
 /***************************************************************************************************
  * @fn      crc32Init()

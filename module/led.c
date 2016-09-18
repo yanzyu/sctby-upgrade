@@ -11,12 +11,13 @@ void ledInit(void);
 void ledOn(void);
 void ledOff(void);
 void ledToggle(void);
+void ledBlink(void);
 
 const Led_t Led __attribute__((at(LED_RO_Base))) = {
     ledInit,
     ledOn,
     ledOff,
-    ledToggle
+    ledToggle,
 };
 
 

@@ -334,7 +334,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER, STM32L053xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\src\hal_driver\Inc;..\src\hal_driver\Inc\Legacy;..\src\perpherial\Inc;..\src\user\bootloader</IncludePath>
+              <IncludePath>..\src\hal_driver\Inc;..\src\hal_driver\Inc\Legacy;..\src\perpherial\Inc;..\src\user\bootloader;..\src\xmodem</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -472,6 +472,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\perpherial\Src\stop.c</FilePath>
             </File>
+            <File>
+              <FileName>crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\perpherial\Src\crc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -501,6 +506,21 @@
               <FileName>startup_stm32l053xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\src\user\startup_stm32l053xx.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ota</GroupName>
+          <Files>
+            <File>
+              <FileName>xmodem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\xmodem\xmodem.c</FilePath>
+            </File>
+            <File>
+              <FileName>ota.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\xmodem\ota.c</FilePath>
             </File>
           </Files>
         </Group>
