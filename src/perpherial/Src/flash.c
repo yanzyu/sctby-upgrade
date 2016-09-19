@@ -17,6 +17,84 @@
  */
 #include "flash.h"
 
+volatile uint16_t error;
+
+/***************************************************************************************************
+ * PRIVATE FUNCTIONS DECLEAR
+ *
+***************************************************************************************************/
+static uint8_t waitOpDone() {
+    /* Wait till no operation is on going */
+    while ((FLASH->SR & FLASH_SR_BSY) != 0) /* (1) */  
+    {
+    /* For robust implementation, add here time-out management */
+    }
+    return 0;
+}
+
+uint8_t flashUnlock() {
+    waitOpDone();
+    /* unlocks the NVM */
+    if((FLASH->PECR & FLASH_PECR_PRGLOCK) != 0) {
+        /* Unlocking FLASH_PECR register access */
+        if((FLASH->PECR & FLASH_PECR_PELOCK) != 0) {  
+            FLASH->PEKEYR = FLASH_PEKEY1;
+            FLASH->PEKEYR = FLASH_PEKEY2;
+        }
+        /* Unlocking the program memory access */
+        FLASH->PRGKEYR = FLASH_PRGKEY1;
+        FLASH->PRGKEYR = FLASH_PRGKEY2;  
+    } else {
+        return 1;
+    }
+
+    return 0; 
+}
+
+uint8_t flashLock() {
+    waitOpDone();
+    /* lock the flash */
+    FLASH->PECR |= FLASH_PECR_PELOCK;
+    return 0; 
+}
+
+static uint16_t FlashErase(uint32_t page_addr)
+{   
+    /* (1) Set the ERASE and PROG bits in the FLASH_PECR register 
+         to enable page erasing */
+    /* (2) Write a 32-bit word value in an address of the selected page 
+         to start the erase sequence */
+    /* (3) Wait until the BSY bit is reset in the FLASH_SR register */
+    /* (4) Check the EOP flag in the FLASH_SR register */
+    /* (5) Clear EOP flag by software by writing EOP at 1 */
+    /* (6) Reset the ERASE and PROG bits in the FLASH_PECR register 
+         to disable the page erase */
+    FLASH->PECR |= FLASH_PECR_ERASE | FLASH_PECR_PROG; /* (1) */    
+    *(__IO uint32_t *)page_addr = (uint32_t)0; /* (2) */    
+    while ((FLASH->SR & FLASH_SR_BSY) != 0) { /* (3) */ 
+        /* For robust implementation, add here time-out management */
+    }  
+    if ((FLASH->SR & FLASH_SR_EOP) != 0) { /* (4) */ 
+        FLASH->SR = FLASH_SR_EOP; /* (5)*/
+    }  /* Manage the error cases */
+    else if ((FLASH->SR & FLASH_SR_FWWERR) != 0) { /* Check Fetch while Write error */
+        error |= ERROR_FETCH_DURING_ERASE; /* Report the error to the main progran */
+        FLASH->SR = FLASH_SR_FWWERR; /* Clear the flag by software by writing it at 1*/
+    } else if ((FLASH->SR & FLASH_SR_SIZERR) != 0) { /* Check Size error */ 
+        error |= ERROR_SIZE; /* Report the error to the main progran */
+        FLASH->SR = FLASH_SR_SIZERR; /* Clear the flag by software by writing it at 1*/
+    } else if ((FLASH->SR & FLASH_SR_WRPERR) != 0) { /* Check Write protection error */
+        error |= ERROR_WRITE_PROTECTION; /* Report the error to the main progran */
+        FLASH->SR = FLASH_SR_WRPERR; /* Clear the flag by software by writing it at 1*/
+    } else {
+        //error;
+        //error |= ERROR_UNKNOWN; /* Report the error to the main progran */
+    }
+    FLASH->PECR &= ~(FLASH_PECR_ERASE | FLASH_PECR_PROG); /* (6) */
+    return error;
+}
+
+
 /***************************************************************************************************
  * GLOBAL FUNCTIONS DECLEAR
  *
@@ -32,104 +110,28 @@
  * 					Length: 	 the number of bytes need to be erased.
  * @return  state of option
  */
-FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length) {
-    FLASH_EraseInitTypeDef    EraseInitStruct;
-    uint32_t result        =  FLASHIF_OK;
-
-    HAL_FLASH_Unlock();
-
-    EraseInitStruct.PageAddress  = pageStart;
-    EraseInitStruct.TypeErase    = FLASH_TYPEERASE_PAGES;
-    EraseInitStruct.NbPages      = length / FLASH_PAGE_SIZE;
-    
-    if (HAL_FLASHEx_Erase(&EraseInitStruct, &result) != HAL_OK)
-        return FLASHIF_ERASE_ERROR;
-  
-    HAL_FLASH_Lock();
-
-    return FLASHIF_OK;
-}	
-
-
-/***************************************************************************************************
- * @fn      flashPageWrite()
- *
- * @brief   write an word array into flash
- *					flashPageErase() should be called responsiblly before use this function
- *
- * @author  yan zeyu
- *
- * @param   destination: the address to be written into.
- * 					p_source:    word array to be written.
- *          wordsLength: the length of the array.
- * @return  state of option
- */
-FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wordsLength) {
-    uint32_t data    =   0;
-    uint32_t i       =   0;
-  
-    /* unlock the flash */
-    HAL_FLASH_Unlock();
-
-    /* write the words to the memory */
-    while(i<wordsLength) {
-        /* transfer 8bit data to 32bit data */
-        data = (uint32_t)p_source[i*4] + (uint32_t)(p_source[i*4+1] << 8) +  
-            (uint32_t)(p_source[i*4+2] << 16) +  (uint32_t)(p_source[i*4+3] << 24);
-        
-        if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, destination + i * 4, data) == HAL_OK)
-            i++;
-        else
-            return FLASHIF_WRITING_ERROR;
+uint16_t flashPageErase(uint32_t pageStart, uint32_t length) {
+    uint32_t i;
+    if (length % FLASH_PAGE_SIZE != 0) {
+        return ERROR_SIZE;
     }
-    /* lock the flash */
-    HAL_FLASH_Lock();
-
-    return FLASHIF_OK;
+    flashUnlock();
+    
+    for (i = 0; i < length / FLASH_PAGE_SIZE; i++) {
+        FlashErase(pageStart + i * FLASH_PAGE_SIZE);
+    }
+    
+    flashLock();
+    return 0;
 }	
-
-
-
-#ifdef FLASH_DISABLE
-void flashProtectionDisable(void) {
-    uint32_t ProtectedPages;
-    /*Variable used to handle the Options Bytes*/
-    FLASH_OBProgramInitTypeDef OptionsBytesStruct;
-
-    /* Unlock the Options Bytes *************************************************/
-    HAL_FLASH_OB_Unlock();
-
-    /* Get pages write protection status ****************************************/
-    HAL_FLASHEx_OBGetConfig(&OptionsBytesStruct);
-    
-    /* Get pages already write protected ****************************************/
-    ProtectedPages = OptionsBytesStruct.WRPSector | FLASH_SECTORS_TO_BE_PROTECTED;
-    
-    /* Check if there is write protected pages ********************************/
-    if((OptionsBytesStruct.WRPSector & FLASH_SECTORS_TO_BE_PROTECTED) == FLASH_SECTORS_TO_BE_PROTECTED) {
-
-        /* Restore write protected pages */
-        OptionsBytesStruct.OptionType   = OPTIONBYTE_WRP;
-        OptionsBytesStruct.WRPState     = OB_WRPSTATE_DISABLE;
-        OptionsBytesStruct.WRPSector 	= ProtectedPages;
-         
-        if(HAL_FLASHEx_OBProgram(&OptionsBytesStruct) != HAL_OK) {
-            /* Error occurred while options bytes programming. **********************/
-            while (1) { };
-        }
-        /* Generate System Reset to load the new option byte values ***************/
-        HAL_FLASH_OB_Launch();
-    }  
-    
-    /* Lock the Options Bytes *************************************************/
-    HAL_FLASH_OB_Lock();
-}
-#endif
 
 /***************************************************************************************************
 * HISTORY LIST
 * 1. Create File by yan zeyu @ 20151127
 *   context: here write modified history
+*
+* 2. Modified by yan zeyu @ 20151212
+* write the flash using half_page mode.
 *
 ***************************************************************************************************/
 

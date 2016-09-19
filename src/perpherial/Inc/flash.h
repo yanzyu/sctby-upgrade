@@ -19,25 +19,49 @@
 /***************************************************************************************************
  * INCLUDES
  */
-#include "stm32l0xx_hal.h"
+#include "stm32l0xx.h"
+
+/* NVM key definitions */
+#define FLASH_PDKEY1               ((uint32_t)0x04152637) /*!< Flash power down key1 */
+#define FLASH_PDKEY2               ((uint32_t)0xFAFBFCFD) /*!< Flash power down key2: used with FLASH_PDKEY1 
+                                                              to unlock the RUN_PD bit in FLASH_ACR */
+
+#define FLASH_PEKEY1               ((uint32_t)0x89ABCDEF) /*!< Flash program erase key1 */
+#define FLASH_PEKEY2               ((uint32_t)0x02030405) /*!< Flash program erase key: used with FLASH_PEKEY2
+                                                               to unlock the write access to the FLASH_PECR register and
+                                                               data EEPROM */
+
+#define FLASH_PRGKEY1              ((uint32_t)0x8C9DAEBF) /*!< Flash program memory key1 */
+#define FLASH_PRGKEY2              ((uint32_t)0x13141516) /*!< Flash program memory key2: used with FLASH_PRGKEY2
+                                                               to unlock the program memory */
+
+#define FLASH_OPTKEY1              ((uint32_t)0xFBEAD9C8) /*!< Flash option key1 */
+#define FLASH_OPTKEY2              ((uint32_t)0x24252627) /*!< Flash option key2: used with FLASH_OPTKEY1 to
+                                                              unlock the write access to the option byte block */
+
+/* Error codes used to make the red led blinking */
+#define ERROR_ERASE 0x01
+#define ERROR_PROG  0x02
+#define ERROR_HALF_PROG 0x04
+#define ERROR_PROG_FLAG 0x08
+#define ERROR_WRITE_PROTECTION 0x10
+#define ERROR_FETCH_DURING_ERASE 0x20
+#define ERROR_FETCH_DURING_PROG 0x40
+#define ERROR_SIZE 0x80
+#define ERROR_ALIGNMENT 0x100
+#define ERROR_NOT_ZERO 0x200
+#define ERROR_UNKNOWN 0x400
+
+
+#define FLASH_SR_FWWERR ((uint32_t)0x00020000)
+
 
 /***************************************************************************************************
  * MACRO
  */
- #define FLASH_SECTOR_SIZE             ((uint32_t)FLASH_PAGE_SIZE*32)
+#define HALF_PAGE_SIZE                0x40
+#define HALF_PAGE_WORD                (HALF_PAGE_SIZE / 4)
  
-/**************************************************************************************************
- * TYPEDEFS
- */
-typedef enum 
-{
-  FLASHIF_OK = 0,
-  FLASHIF_ERASEKO,
-  FLASHIF_ERASE_ERROR,
-  FLASHIF_WRITING_ERROR,
-  FLASHIF_PROTECTION_ERRROR
-} FLASH_STATE;
-
 /***************************************************************************************************
  * GLOBAL FUNCTIONS DECLEAR
  *
@@ -53,13 +77,13 @@ typedef enum
  * 					wordsLength: the number of words need to be erased.
  * @return  state of option
  */
-FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length);
+uint16_t flashPageErase(uint32_t pageStart, uint32_t length);
 
 /***************************************************************************************************
- * @fn      flashPageWrite()
+ * @fn      flashHalfPageWrite()
  *
- * @brief   write an word array into flash
- *					flashPageErase() should be called responsiblly before use this function
+ * @brief   write an word array into flash using half-page write
+ *			flashPageErase() should be called responsiblly before use this function
  *
  * @author  yan zeyu
  *
@@ -68,12 +92,14 @@ FLASH_STATE flashPageErase(uint32_t pageStart, uint32_t length);
  *          wordsLength: the length of the array.
  * @return  state of option
  */
-FLASH_STATE flashWordWrite(uint32_t destination, uint8_t *p_source, uint32_t wordsLength);
+uint16_t flashHalfPageWrite(uint32_t flash_addr, uint32_t *data);
 
+uint8_t flashUnlock(void);
 
-void flashProtectionDisable(void);
+uint8_t flashLock(void);
 
 #endif  /* __FLASH_H */
+
 
 /***************************************************************************************************
 * HISTORY LIST

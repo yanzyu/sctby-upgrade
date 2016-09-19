@@ -33,9 +33,9 @@ static uint8_t        RtNum;
 static uint8_t        PktNum;   // xmodem packet number has been received
 static uint32_t       TimeOut;
 
-static XmodemRead     Read;   // Read Function
-static XmodemWrite    Write;  // Write Function
-static XmodemCallBack CallBack;    // Operation after receiving a xmodem packet
+static XmodemBool (*Read)(uint8_t *pBuf, uint32_t timeout);
+static void (*Write)(uint8_t *pBuf, uint8_t len);
+static XmodemBool (*CallBack)(uint8_t *pBuf); // Operation after receiving a xmodem packet
 
 /***************************************************************************************************
  * PRIVATE FUNCTION DECLARATION
@@ -56,7 +56,6 @@ static void sendCmd(uint8_t cmd);
 */
 XmodemState_t XmodemReceive(const XmodemInit_t *InitStruct) {
     XmodemState_t state;
-    uint32_t timeTick;
     uint8_t pktBuf[XMODEM_PktSize];
                
     Init(InitStruct);
@@ -74,7 +73,7 @@ XmodemState_t XmodemReceive(const XmodemInit_t *InitStruct) {
         }      
         // if receive a xmodem packet successfully, response ACK and construct the commands
         if (state == XmodemOK) {
-            if (CallBack() != xTrue) {
+            if (CallBack(pktBuf + 3) != xTrue) {
                 sendCmd(XMODEM_CAN);
                 return XmodemFalid;
             }

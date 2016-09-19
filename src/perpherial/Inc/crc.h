@@ -19,7 +19,11 @@
 /***************************************************************************************************
  * INCLUDES
  */
-#include "stm32l0xx_hal.h"
+#include "stm32l0xx.h"
+
+#define DEFAULT_CRC16_POLY            0x1021
+#define DEFAULT_CRC32_POLY            0x04C11DB7
+#define DEFAULT_CRC32_INITVALUE       0xFFFFFFFF
 
 /***************************************************************************************************
  * GLOBAL FUNCTIONS DECLEAR
@@ -51,21 +55,7 @@ uint16_t crc16(uint8_t *dataBuffer, uint32_t length);
  *
  * @return  state of option
  */
-HAL_StatusTypeDef crc32Init(void);
-
-/***************************************************************************************************
- * @fn      crc32Deinit()
- *
- * @brief   Deinitializes the CRC according to the specified
- *          parameters in the CRC_InitTypeDef and creates the associated handle.
- *
- * @author  yan zeyu
- *
- * @param   none
- *
- * @return  state of option
- */
-HAL_StatusTypeDef crc32Deinit(void);
+void crc32Init(void);
 
 /***************************************************************************************************
  * @fn      crcCheck32()
@@ -79,35 +69,7 @@ HAL_StatusTypeDef crc32Deinit(void);
  *
  * @return  check result
  */
-uint32_t crcCheck32(uint8_t* dataBuffer, uint32_t length);
-
-/***************************************************************************************************
- * @fn      HAL_CRC_MspInit()
- *
- * @brief   This function configures the hardware resources used in this example: 
- *           - Peripheral's clock enable 
- *
- * @author  yan zeyu
- *
- * @param   hcrc: CRC handle pointer
- *
- * @return  none.
- */
-void HAL_CRC_MspInit(CRC_HandleTypeDef *hcrc);
-
-/***************************************************************************************************
- * @fn      HAL_CRC_MspDeInit()
- *
- * @brief   This function freeze the hardware resources used in this example:
- *          - Disable the Peripheral's clock
- *
- * @author  yan zeyu
- *
- * @param   hcrc: CRC handle pointer
- *
- * @return  none.
- */
-void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc);
+uint32_t crc32(uint32_t* dataBuffer, uint32_t length);
 
 #endif  /* __CRC_H */
 

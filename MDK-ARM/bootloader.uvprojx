@@ -473,6 +473,16 @@
               <FilePath>..\src\perpherial\Src\stop.c</FilePath>
             </File>
             <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\perpherial\Src\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash_ram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\perpherial\Src\flash_ram.c</FilePath>
+            </File>
+            <File>
               <FileName>crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\perpherial\Src\crc.c</FilePath>

@@ -16,16 +16,11 @@
  * INCLUDES
  */
 #include "crc.h"
-#include "string.h"
 
 /*****************************************************************************
  * private variable
 
 *****************************************************************************/
-const static uint16_t POLYNOMIAL16 = 0x1021;
-
-CRC_HandleTypeDef   CrcHandle;
-
 /***************************************************************************************************
  * GLOBAL FUNCTIONS DECLEAR
  *
@@ -53,7 +48,7 @@ uint16_t crc16(uint8_t *dataBuffer, uint32_t length)
         for (i=8; i!=0; i--) 
         {
             if (crc & 0x8000)   
-                crc = crc << 1 ^ POLYNOMIAL16;    
+                crc = crc << 1 ^ DEFAULT_CRC16_POLY;    
             else
                 crc = crc << 1;
 		}
@@ -73,45 +68,16 @@ uint16_t crc16(uint8_t *dataBuffer, uint32_t length)
  *
  * @return  state of option
  */
-HAL_StatusTypeDef crc32Init(void)
+void crc32Init(void)
 {
-    CrcHandle.Instance = CRC; 
-  
-    CrcHandle.Init.DefaultPolynomialUse    = DEFAULT_POLYNOMIAL_ENABLE;
-    CrcHandle.Init.DefaultInitValueUse     = DEFAULT_INIT_VALUE_ENABLE;
-    CrcHandle.Init.InputDataInversionMode  = CRC_INPUTDATA_INVERSION_NONE;
-    CrcHandle.Init.OutputDataInversionMode = CRC_OUTPUTDATA_INVERSION_DISABLE;
-    CrcHandle.InputDataFormat              = CRC_INPUTDATA_FORMAT_WORDS;
-	
-	/* DeInitializes the CRC peripheral */
-    HAL_CRC_DeInit(&CrcHandle);
-  
-    /* Initialise CRC */
-    HAL_CRC_Init(&CrcHandle);
-
-    if(HAL_CRC_Init(&CrcHandle) != HAL_OK)
-    {
-        /* Initialization Error */
-        return HAL_ERROR;
-    }
-	return HAL_OK;
-}
-
-/***************************************************************************************************
- * @fn      crc32Deinit()
- *
- * @brief   Deinitializes the CRC according to the specified
- *          parameters in the CRC_InitTypeDef and creates the associated handle.
- *
- * @author  yan zeyu
- *
- * @param   none
- *
- * @return  state of option
- */
-HAL_StatusTypeDef crc32Deinit(void)
-{
-	return HAL_CRC_DeInit(&CrcHandle);
+    /* Enable the peripheral clock USART1 */
+    RCC->AHBENR |= RCC_AHBENR_CRCEN;
+    
+    CRC->POL = DEFAULT_CRC32_POLY;          // set CRC polynomial
+    CRC->INIT = DEFAULT_CRC32_INITVALUE;    // set CRC init value
+    CRC->CR = (CRC->CR & ~(CRC_CR_REV_IN | CRC_CR_REV_OUT)) \
+        | (CRC_CR_REV_IN | CRC_CR_REV_OUT); // Bit reversal done by byte, Bit-reversed output format
+    CRC->CR = CRC->CR & ~CRC_CR_POLYSIZE;   // 32 bit polynomial
 }
 
 /***************************************************************************************************
@@ -126,74 +92,15 @@ HAL_StatusTypeDef crc32Deinit(void)
  *
  * @return  check result
  */
-uint32_t crcCheck32(uint8_t* dataBuffer, uint32_t length)
+uint32_t crc32(uint32_t* dataBuffer, uint32_t length)
 {
-    uint8_t crcArray[256];
-    uint32_t crcLength = 0;
-    uint8_t temp = 0;
-    
-    if( length > 256 )
-    {
-        return 0;
-    }else{
-        crcLength = (length + 3) & 0xFFFFFFFC;
-        memset( crcArray, 0, crcLength );
-        memcpy( crcArray, dataBuffer, length );
-        
-        for( uint32_t i = 0; i < crcLength; i+=4 )
-        {
-            temp = crcArray[i+0];
-            crcArray[i+0] = crcArray[i+3];
-            crcArray[i+3] = temp;
-            temp = crcArray[i+1];
-            crcArray[i+1] = crcArray[i+2];
-            crcArray[i+2] = temp;
-        }
-        
-
-        return HAL_CRC_Calculate(&CrcHandle, (uint32_t*)crcArray, crcLength >> 2);
+    uint32_t index;
+    CRC->CR = CRC->CR | CRC_CR_RESET;   // reset the CRC32 data register
+    while(CRC->CR & CRC_CR_RESET) {}    // wait for reset
+    for (index = 0; index < length; index++) {
+        CRC->DR = dataBuffer[index];
     }
-    
-    
-}
-
-/***************************************************************************************************
- * @fn      HAL_CRC_MspInit()
- *
- * @brief   This function configures the hardware resources used in this example: 
- *           - Peripheral's clock enable 
- *
- * @author  yan zeyu
- *
- * @param   hcrc: CRC handle pointer
- *
- * @return  none.
- */
-void HAL_CRC_MspInit(CRC_HandleTypeDef *hcrc)
-{
-   /* CRC Peripheral clock enable */
-  __HAL_RCC_CRC_CLK_ENABLE();
-}
-
-/***************************************************************************************************
- * @fn      HAL_CRC_MspDeInit()
- *
- * @brief   This function freeze the hardware resources used in this example:
- *          - Disable the Peripheral's clock
- *
- * @author  yan zeyu
- *
- * @param   hcrc: CRC handle pointer
- *
- * @return  none.
- */
-void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc)
-{
-  /* Enable CRC reset state */
-  __HAL_RCC_CRC_FORCE_RESET();
-  
-  /* Release CRC from reset state */
-  __HAL_RCC_CRC_RELEASE_RESET();
+    return CRC->DR ^ 0xffffffff;
 }
 
 /***************************************************************************************************

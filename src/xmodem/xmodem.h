@@ -23,10 +23,6 @@ typedef enum {
     xTrue = !xFalse
 } XmodemBool;
 
-typedef uint8_t (*XmodemRead)(uint8_t *pBuf, uint32_t timeout);
-typedef void    (*XmodemWrite)(uint8_t *pBuf, uint8_t len);
-typedef XmodemBool (*XmodemCallBack)(void);
-
 // OtaState shows the result of OTA function
 typedef enum {
     XmodemOK,   // operation ok state
@@ -41,9 +37,10 @@ typedef enum {
 typedef struct {
     uint32_t    RtNum;          // Retransmission times number
     uint32_t    TimeOut;        // Receive TimeOut
-    XmodemRead  Read;
-    XmodemWrite Write;
-    XmodemCallBack CallBack;    // Operation after receiving a xmodem packet
+    
+    XmodemBool (*Read)(uint8_t *pBuf, uint32_t timeout);   // Read function
+    void (*Write)(uint8_t *pBuf, uint8_t len);          // Write function
+    XmodemBool (*CallBack)(uint8_t *pBuf);              // Operation after receiving a xmodem packet
 } XmodemInit_t;
 
 /***************************************************************************************************

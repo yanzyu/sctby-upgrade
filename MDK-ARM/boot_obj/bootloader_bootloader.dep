@@ -1,9 +1,9 @@
 Dependencies for Project 'bootloader', Target 'bootloader': (DO NOT MODIFY !)
-F (..\src\hal_driver\Src\stm32l0xx_hal.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal.o --omf_browse .\boot_obj\stm32l0xx_hal.crf --depend .\boot_obj\stm32l0xx_hal.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal.o --omf_browse .\boot_obj\stm32l0xx_hal.crf --depend .\boot_obj\stm32l0xx_hal.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -33,11 +33,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_cortex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_cortex.o --omf_browse .\boot_obj\stm32l0xx_hal_cortex.crf --depend .\boot_obj\stm32l0xx_hal_cortex.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_cortex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_cortex.o --omf_browse .\boot_obj\stm32l0xx_hal_cortex.crf --depend .\boot_obj\stm32l0xx_hal_cortex.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -67,11 +67,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_gpio.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_gpio.o --omf_browse .\boot_obj\stm32l0xx_hal_gpio.crf --depend .\boot_obj\stm32l0xx_hal_gpio.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_gpio.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_gpio.o --omf_browse .\boot_obj\stm32l0xx_hal_gpio.crf --depend .\boot_obj\stm32l0xx_hal_gpio.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -101,11 +101,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_uart.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_uart.o --omf_browse .\boot_obj\stm32l0xx_hal_uart.crf --depend .\boot_obj\stm32l0xx_hal_uart.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_uart.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_uart.o --omf_browse .\boot_obj\stm32l0xx_hal_uart.crf --depend .\boot_obj\stm32l0xx_hal_uart.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -135,11 +135,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_uart_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_uart_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_uart_ex.crf --depend .\boot_obj\stm32l0xx_hal_uart_ex.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_uart_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_uart_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_uart_ex.crf --depend .\boot_obj\stm32l0xx_hal_uart_ex.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -169,11 +169,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_usart.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_usart.o --omf_browse .\boot_obj\stm32l0xx_hal_usart.crf --depend .\boot_obj\stm32l0xx_hal_usart.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_usart.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_usart.o --omf_browse .\boot_obj\stm32l0xx_hal_usart.crf --depend .\boot_obj\stm32l0xx_hal_usart.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -203,11 +203,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_dma.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_dma.o --omf_browse .\boot_obj\stm32l0xx_hal_dma.crf --depend .\boot_obj\stm32l0xx_hal_dma.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_dma.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_dma.o --omf_browse .\boot_obj\stm32l0xx_hal_dma.crf --depend .\boot_obj\stm32l0xx_hal_dma.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -237,11 +237,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_rcc.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rcc.o --omf_browse .\boot_obj\stm32l0xx_hal_rcc.crf --depend .\boot_obj\stm32l0xx_hal_rcc.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_rcc.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rcc.o --omf_browse .\boot_obj\stm32l0xx_hal_rcc.crf --depend .\boot_obj\stm32l0xx_hal_rcc.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -271,11 +271,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_rcc_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rcc_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_rcc_ex.crf --depend .\boot_obj\stm32l0xx_hal_rcc_ex.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_rcc_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rcc_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_rcc_ex.crf --depend .\boot_obj\stm32l0xx_hal_rcc_ex.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -305,11 +305,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_pwr.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_pwr.o --omf_browse .\boot_obj\stm32l0xx_hal_pwr.crf --depend .\boot_obj\stm32l0xx_hal_pwr.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_pwr.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_pwr.o --omf_browse .\boot_obj\stm32l0xx_hal_pwr.crf --depend .\boot_obj\stm32l0xx_hal_pwr.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -339,11 +339,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_pwr_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_pwr_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_pwr_ex.crf --depend .\boot_obj\stm32l0xx_hal_pwr_ex.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_pwr_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_pwr_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_pwr_ex.crf --depend .\boot_obj\stm32l0xx_hal_pwr_ex.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -373,11 +373,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_rtc.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rtc.o --omf_browse .\boot_obj\stm32l0xx_hal_rtc.crf --depend .\boot_obj\stm32l0xx_hal_rtc.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_rtc.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rtc.o --omf_browse .\boot_obj\stm32l0xx_hal_rtc.crf --depend .\boot_obj\stm32l0xx_hal_rtc.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -407,11 +407,11 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\hal_driver\Src\stm32l0xx_hal_rtc_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rtc_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_rtc_ex.crf --depend .\boot_obj\stm32l0xx_hal_rtc_ex.d)
+F (..\src\hal_driver\Src\stm32l0xx_hal_rtc_ex.c)(0x56E67660)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_rtc_ex.o --omf_browse .\boot_obj\stm32l0xx_hal_rtc_ex.crf --depend .\boot_obj\stm32l0xx_hal_rtc_ex.d)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -441,12 +441,12 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\perpherial\Src\clock.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\clock.o --omf_browse .\boot_obj\clock.crf --depend .\boot_obj\clock.d)
+F (..\src\perpherial\Src\clock.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\clock.o --omf_browse .\boot_obj\clock.crf --depend .\boot_obj\clock.d)
 I (..\src\perpherial\Inc\clock.h)(0x56E67664)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -476,7 +476,7 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\perpherial\Src\uart.c)(0x57D7C09B)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\uart.o --omf_browse .\boot_obj\uart.crf --depend .\boot_obj\uart.d)
+F (..\src\perpherial\Src\uart.c)(0x57D7C09B)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\uart.o --omf_browse .\boot_obj\uart.crf --depend .\boot_obj\uart.d)
 I (..\src\perpherial\Inc\uart.h)(0x57D7C089)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
@@ -489,7 +489,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
@@ -511,12 +511,12 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\perpherial\Src\jump.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\jump.o --omf_browse .\boot_obj\jump.crf --depend .\boot_obj\jump.d)
+F (..\src\perpherial\Src\jump.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\jump.o --omf_browse .\boot_obj\jump.crf --depend .\boot_obj\jump.d)
 I (..\src\perpherial\Inc\jump.h)(0x56E67663)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -546,12 +546,12 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\perpherial\Src\stm32l0538_discovery.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0538_discovery.o --omf_browse .\boot_obj\stm32l0538_discovery.crf --depend .\boot_obj\stm32l0538_discovery.d)
+F (..\src\perpherial\Src\stm32l0538_discovery.c)(0x56E67663)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0538_discovery.o --omf_browse .\boot_obj\stm32l0538_discovery.crf --depend .\boot_obj\stm32l0538_discovery.d)
 I (..\src\perpherial\Inc\stm32l0538_discovery.h)(0x56E67663)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -581,12 +581,12 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\perpherial\Src\stop.c)(0x56E67664)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stop.o --omf_browse .\boot_obj\stop.crf --depend .\boot_obj\stop.d)
+F (..\src\perpherial\Src\stop.c)(0x56E67664)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stop.o --omf_browse .\boot_obj\stop.crf --depend .\boot_obj\stop.d)
 I (..\src\perpherial\Inc\stop.h)(0x56E67664)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -616,12 +616,117 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\user\bootloader\boot_main.c)(0x57D7C0B3)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\boot_main.o --omf_browse .\boot_obj\boot_main.crf --depend .\boot_obj\boot_main.d)
-I (..\src\user\bootloader\boot_main.h)(0x57D7BDD8)
+F (..\src\perpherial\Src\flash.c)(0x57BCFBC4)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\flash.o --omf_browse .\boot_obj\flash.crf --depend .\boot_obj\flash.d)
+I (..\src\perpherial\Inc\flash.h)(0x57BCFC0A)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x56FE42DE)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h)(0x562D8D02)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
+I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_gpio.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_gpio_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_dma.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_cortex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_crc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_crc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_flash.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_pwr.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_pwr_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rtc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rtc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_spi.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
+F (..\src\perpherial\Src\flash_ram.c)(0x57BCFC47)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\flash_ram.o --omf_browse .\boot_obj\flash_ram.crf --depend .\boot_obj\flash_ram.d)
+I (..\src\perpherial\Inc\flash.h)(0x57BCFC0A)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x56FE42DE)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h)(0x562D8D02)
+I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
+I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
+I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_gpio.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_gpio_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_dma.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_cortex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_crc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_crc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_flash.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_pwr.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_pwr_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rtc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rtc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_spi.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
+F (..\src\perpherial\Src\crc.c)(0x57DFAC3D)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\crc.o --omf_browse .\boot_obj\crc.crf --depend .\boot_obj\crc.d)
+I (..\src\perpherial\Inc\crc.h)(0x57BC1F2A)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x56FE42DE)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h)(0x562D8D02)
+I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
+I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
+I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_gpio.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_gpio_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_dma.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_cortex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_crc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_crc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_flash.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_pwr.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_pwr_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rtc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rtc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_spi.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
+F (..\src\user\bootloader\boot_main.c)(0x57DFB176)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\boot_main.o --omf_browse .\boot_obj\boot_main.crf --depend .\boot_obj\boot_main.d)
+I (..\src\user\bootloader\boot_main.h)(0x57DE55C3)
+I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
+I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -655,12 +760,14 @@ I (..\src\perpherial\Inc\clock.h)(0x56E67664)
 I (..\src\perpherial\Inc\jump.h)(0x56E67663)
 I (..\src\perpherial\Inc\stm32l0538_discovery.h)(0x56E67663)
 I (..\src\perpherial\Inc\uart.h)(0x57D7C089)
-F (..\src\user\bootloader\stm32l0xx_hal_msp.c)(0x57D60925)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_msp.o --omf_browse .\boot_obj\stm32l0xx_hal_msp.crf --depend .\boot_obj\stm32l0xx_hal_msp.d)
-I (..\src\user\bootloader\boot_main.h)(0x57D7BDD8)
+I (..\src\perpherial\Inc\crc.h)(0x57BC1F2A)
+I (..\src\xmodem\ota.h)(0x57DFABC6)
+F (..\src\user\bootloader\stm32l0xx_hal_msp.c)(0x57D60925)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_hal_msp.o --omf_browse .\boot_obj\stm32l0xx_hal_msp.crf --depend .\boot_obj\stm32l0xx_hal_msp.d)
+I (..\src\user\bootloader\boot_main.h)(0x57DE55C3)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -690,12 +797,12 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\user\bootloader\stm32l0xx_it.c)(0x57D65D44)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_it.o --omf_browse .\boot_obj\stm32l0xx_it.crf --depend .\boot_obj\stm32l0xx_it.d)
+F (..\src\user\bootloader\stm32l0xx_it.c)(0x57D65D44)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\stm32l0xx_it.o --omf_browse .\boot_obj\stm32l0xx_it.crf --depend .\boot_obj\stm32l0xx_it.d)
 I (..\src\user\bootloader\stm32l0xx_it.h)(0x56E67663)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -726,10 +833,10 @@ I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
 I (..\src\perpherial\Inc\clock.h)(0x56E67664)
-I (..\src\perpherial\Inc\crc.h)(0x56E67664)
+I (..\src\perpherial\Inc\crc.h)(0x57BC1F2A)
 I (..\src\perpherial\Inc\uart.h)(0x57D7C089)
 I (..\src\perpherial\Inc\stop.h)(0x56E67664)
-F (..\src\user\bootloader\system_stm32l0xx.c)(0x57D60EBC)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\system_stm32l0xx.o --omf_browse .\boot_obj\system_stm32l0xx.crf --depend .\boot_obj\system_stm32l0xx.d)
+F (..\src\user\bootloader\system_stm32l0xx.c)(0x57D60EBC)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\system_stm32l0xx.o --omf_browse .\boot_obj\system_stm32l0xx.crf --depend .\boot_obj\system_stm32l0xx.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -741,7 +848,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
-I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
 I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
@@ -764,3 +871,80 @@ I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
 F (..\src\user\startup_stm32l053xx.s)(0x56E67663)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include--pd "__UVISION_VERSION SETA 520" --pd "_RTE_ SETA 1" --pd "STM32L053xx SETA 1"--list .\boot_obj\startup_stm32l053xx.lst --xref -o .\boot_obj\startup_stm32l053xx.o --depend .\boot_obj\startup_stm32l053xx.d)
+F (..\src\xmodem\xmodem.c)(0x57DFA2E9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\xmodem.o --omf_browse .\boot_obj\xmodem.crf --depend .\boot_obj\xmodem.d)
+I (..\src\xmodem\xmodem.h)(0x57DFA006)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x56FE42DE)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h)(0x562D8D02)
+I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
+I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
+I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_gpio.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_gpio_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_dma.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_cortex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_crc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_crc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_flash.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_pwr.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_pwr_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rtc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rtc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_spi.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
+I (..\src\perpherial\Inc\crc.h)(0x57BC1F2A)
+F (..\src\xmodem\ota.c)(0x57DFC1AE)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\user\bootloader -I ..\src\xmodem --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L053xx -DUSE_HAL_DRIVER -DSTM32L053xx-o .\boot_obj\ota.o --omf_browse .\boot_obj\ota.crf --depend .\boot_obj\ota.d)
+I (..\src\xmodem\ota.h)(0x57DFABC6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57CFB6AA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h)(0x562D8D02)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x56FE42DE)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57352EA6)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h)(0x562D8D02)
+I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
+I (..\src\user\bootloader\stm32l0xx_hal_conf.h)(0x56E67663)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_def.h)(0x57DFA5F2)
+I (..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h)(0x56E6765D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_gpio.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_gpio_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_dma.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_cortex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_crc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_crc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_flash.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_pwr.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_pwr_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_rtc.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_rtc_ex.h)(0x56E6765D)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_spi.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
+I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
+I (..\src\xmodem\xmodem.h)(0x57DFA006)
+I (..\src\perpherial\Inc\flash.h)(0x57BCFC0A)
+I (..\src\perpherial\Inc\crc.h)(0x57BC1F2A)
+I (..\src\perpherial\Inc\jump.h)(0x56E67663)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x56FE42DE)
+I (..\src\perpherial\Inc\uart.h)(0x57D7C089)

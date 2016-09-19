@@ -20,6 +20,8 @@
 #include "jump.h"
 #include "stm32l0538_discovery.h"
 #include "uart.h"
+#include "crc.h"
+#include "ota.h"
 
 void setVer(void);
 void setCrc(void);
@@ -41,26 +43,14 @@ void setCrc(void);
  * @return  state of option
  */
 int main(void)
-{
-    uint32_t timetick;
-    
+{   
     HAL_Init();
     clkConfig();
-    BSP_LED_Init(LED3);
+    //BSP_LED_Init(LED3);
     InitUart1();
+    crc32Init();
     
-    timetick = HAL_GetTick();
-    while ((HAL_GetTick() - timetick) < 2000) {
-        HAL_Delay(100);
-        BSP_LED_Toggle(LED3);
-    }
-    
-    setVer();
-    setCrc();
-    DeinitUart1();
-    
-    jump(APP_BASE);
-    
+    ota();
 
     while (1) {
        
