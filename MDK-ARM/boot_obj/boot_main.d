@@ -40,3 +40,4 @@
 .\boot_obj\boot_main.o: ..\src\perpherial\Inc\uart.h
 .\boot_obj\boot_main.o: ..\src\perpherial\Inc\crc.h
 .\boot_obj\boot_main.o: ..\src\xmodem\ota.h
+.\boot_obj\boot_main.o: ..\src\perpherial\Inc\flash.h

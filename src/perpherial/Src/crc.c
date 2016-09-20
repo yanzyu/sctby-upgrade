@@ -92,14 +92,36 @@ void crc32Init(void)
  *
  * @return  check result
  */
-uint32_t crc32(uint32_t* dataBuffer, uint32_t length)
-{
-    uint32_t index;
+uint32_t crc32(uint8_t* dataBuffer, uint32_t length) {
+    uint32_t i;
     CRC->CR = CRC->CR | CRC_CR_RESET;   // reset the CRC32 data register
     while(CRC->CR & CRC_CR_RESET) {}    // wait for reset
-    for (index = 0; index < length; index++) {
-        CRC->DR = dataBuffer[index];
+        
+//    for (index = 0; index < length; index++) {
+//        CRC->DR = dataBuffer[index];
+//    }
+
+  
+   /* Processing time optimization: 4 bytes are entered in a row with a single word write,
+    * last bytes must be carefully fed to the CRC calculator to ensure a correct type
+    * handling by the IP */
+    for(i = 0; i < (length/4); i++) {
+      CRC->DR = ((uint32_t)dataBuffer[4*i]) | ((uint32_t)dataBuffer[4*i+1]<<8) | ((uint32_t)dataBuffer[4*i+2]<<16) | ((uint32_t)dataBuffer[4*i+3]<<24);
     }
+   /* last bytes specific handling */
+    if ((length%4) != 0) {
+        if (length%4 == 1) {
+           *(uint8_t volatile*) (&CRC->DR) = dataBuffer[4*i];
+        }
+        if (length%4 == 2) {
+           *(uint16_t volatile*) (&CRC->DR) = (uint32_t)dataBuffer[4*i] | ((uint32_t)dataBuffer[4*i+1]<<8);
+        }
+        if (length%4 == 3) {
+           *(uint16_t volatile*) (&CRC->DR) = (uint32_t)dataBuffer[4*i] | ((uint32_t)dataBuffer[4*i+1]<<8);
+           *(uint8_t volatile*) (&CRC->DR) = dataBuffer[4*i+2];
+        }
+    }       
+    
     return CRC->DR ^ 0xffffffff;
 }
 

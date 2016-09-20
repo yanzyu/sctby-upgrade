@@ -40,3 +40,4 @@
 .\boot_obj\ota.o: ..\src\perpherial\Inc\jump.h
 .\boot_obj\ota.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\boot_obj\ota.o: ..\src\perpherial\Inc\uart.h
+.\boot_obj\ota.o: ..\src\perpherial\Inc\stm32l0538_discovery.h

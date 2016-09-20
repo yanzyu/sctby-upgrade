@@ -8,6 +8,7 @@
 ***************************************************************************************************/
 #include "xmodem.h"
 #include "crc.h"
+#include "flash.h"
 
 /***************************************************************************************************
  * MACRO
@@ -54,10 +55,10 @@ static void sendCmd(uint8_t cmd);
  * Input: none
  * Output: OTA state
 */
+uint8_t pktBuf[256];
 XmodemState_t XmodemReceive(const XmodemInit_t *InitStruct) {
     XmodemState_t state;
-    uint8_t pktBuf[XMODEM_PktSize];
-               
+        
     Init(InitStruct);
     // read the edit table and rebuild the new firmware
     while(xTrue) {
@@ -74,6 +75,7 @@ XmodemState_t XmodemReceive(const XmodemInit_t *InitStruct) {
         // if receive a xmodem packet successfully, response ACK and construct the commands
         if (state == XmodemOK) {
             if (CallBack(pktBuf + 3) != xTrue) {
+            //if (TestCallBack(pktBuf+3) != xTrue) {
                 sendCmd(XMODEM_CAN);
                 return XmodemFalid;
             }
@@ -83,6 +85,7 @@ XmodemState_t XmodemReceive(const XmodemInit_t *InitStruct) {
 }
 
 void Init(const XmodemInit_t *InitStruct) {
+    IsStart =   xFalse;
     PktNum  =   0;
     RtNum   =   InitStruct->RtNum;
     TimeOut =   InitStruct->TimeOut;
@@ -99,7 +102,7 @@ void Init(const XmodemInit_t *InitStruct) {
 */
 XmodemState_t receive(uint8_t *pkt) {
     uint8_t rtTime = 0;
-    uint8_t recvBytes;
+//    uint8_t recvBytes;
     XmodemState_t state;
    
     while(xTrue) {
@@ -112,8 +115,8 @@ XmodemState_t receive(uint8_t *pkt) {
             sendCmd(XMODEM_C);
         }
         // if not receive data, return 
-        recvBytes = Read(pkt, TimeOut);
-        if (recvBytes == 0) {
+//        recvBytes = Read(pkt, TimeOut);
+        if (Read(pkt, TimeOut) != xTrue) {
             if (IsStart) {
                 sendCmd(XMODEM_NAK);    // timeout while receiving a packet, send NAK
             }
@@ -125,7 +128,7 @@ XmodemState_t receive(uint8_t *pkt) {
         }
    
         // check the packet
-        state = checkPkt(pkt, recvBytes);
+        state = checkPkt(pkt, XMODEM_PktSize);
         if (state == XmodemDuplicatePacket) {
             sendCmd(XMODEM_ACK);
             continue;

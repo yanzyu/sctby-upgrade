@@ -139,6 +139,7 @@ void USART1_IRQHandler(void) {
         Err = 1;
         NVIC_DisableIRQ(USART1_IRQn); /* Disable USART1_IRQn */
     }
+    __NOP();
 }
 
 

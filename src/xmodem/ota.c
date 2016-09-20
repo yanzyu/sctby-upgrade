@@ -15,6 +15,8 @@
 #include "uart.h"
 #include "stm32l0xx_hal.h"
 
+//#define DEBUG
+    #include "stm32l0538_discovery.h"
 /***************************************************************************************************
  * MACRO
 ***************************************************************************************************/
@@ -57,10 +59,11 @@ static uint8_t FirmVer[FIRM_VER_LEN];
 static DevState_t DevState = DEV_STATE_OK;
 
 static uint32_t SleepTick;
-static uint32_t ModuleAddr;
-static uint32_t ModuleSize;
-static uint32_t ModuleCrc32;
-static uint32_t FlashIndex;
+// need to add static 
+ uint32_t ModuleAddr;
+ uint32_t ModuleSize;
+ uint32_t ModuleCrc32;
+ uint32_t FlashIndex;
 
 XmodemInit_t    XmodemInitStrcut;
 
@@ -90,9 +93,7 @@ void ota(void) {
     XmodemState_t   xState;
     
     uint8_t rt = 0, buf[FRAME_GW_RESP_LEN];
-    
-    //uint32_t startTick = HAL_GetTick();
-    
+      
     initOta();  // init the variables using in ota
       
     while (oTrue) {
@@ -114,17 +115,18 @@ void ota(void) {
                 FlashIndex = ModuleAddr;       
                 
                 // prepare the flash
-                flashPageErase(ModuleAddr, ModuleSize);
-                
+                //flashPageErase(ModuleAddr, ModuleSize);
                 // xmodem transfer
                 xState = XmodemReceive(&XmodemInitStrcut);
                 if (xState != XmodemOK) {
                     // enter error mode
+                    BSP_LED_On(LED3);
                 }
                 
                 // check the module
-                if (crc32((uint32_t*)ModuleAddr, ModuleSize) != ModuleCrc32) {
+                if (crc32((uint8_t*)ModuleAddr, ModuleSize) != ModuleCrc32) {
                     // enter error mode
+                    BSP_LED_On(LED4);
                 }
             } else if (buf[0] == DEV_JUMP) {
                 while (oTrue) { }
@@ -138,6 +140,8 @@ void ota(void) {
                 // simulate sleep
                 HAL_Delay(7000);
             }
+        } else {
+            HAL_Delay(3000);
         }
     }
 }
@@ -157,6 +161,9 @@ void initOta() {
     // TODO: get the FirmVer
     // getFirmVer();
     
+    // TODO: get the MaxOtaTime
+    // getMaxOtaTime();
+    
     XmodemInitStrcut.RtNum    = 10; 
     XmodemInitStrcut.TimeOut  = 3000;
     XmodemInitStrcut.Read     = XmodemRead;
@@ -172,7 +179,7 @@ Frame_t otaRead(uint8_t *pBuf, uint32_t timeOut) {
     // only for test
     n = (uint8_t)uartReceive_Pkt(buf, timeOut);
     
-    if (identify(pBuf, n) != oTrue) {
+    if (identify(buf, n) != oTrue) {
         return FRAME_WRONG;
     }
     memcpy(pBuf, buf+RF_MinSize, n-RF_MinSize);
@@ -258,15 +265,17 @@ void XmodemWrite(uint8_t *pBuf, uint8_t len) {
 }
 
 XmodemBool XmodemCallBack(uint8_t *pBuf) {
+    int i;
+    uint8_t buf[HALF_PAGE_SIZE];
+    memcpy(buf, pBuf, HALF_PAGE_SIZE);
+    
+    flashPageErase(FlashIndex, HALF_PAGE_SIZE * 2);
     // received a 128-bytes update packet using xmodem
     // write the update packet into flash
-    if (flashHalfPageWrite(FlashIndex, (uint32_t*)pBuf) != 0) {          
-        return xFalse;
-    }
+    flashHalfPageWrite(FlashIndex, (uint32_t*)buf);
     FlashIndex += HALF_PAGE_SIZE;    // point to next half page
-    if (flashHalfPageWrite(FlashIndex, (uint32_t*)(pBuf + HALF_PAGE_SIZE)) != 0) {          
-        return xFalse;
-    }
+    flashHalfPageWrite(FlashIndex, (uint32_t*)(pBuf + HALF_PAGE_SIZE));
+    
     FlashIndex += HALF_PAGE_SIZE;    // point to next half page
     return xTrue;
 }

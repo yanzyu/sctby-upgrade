@@ -35,3 +35,4 @@
 .\boot_obj\xmodem.o: ..\src\hal_driver\Inc\STM32L0xx_hal_uart.h
 .\boot_obj\xmodem.o: ..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h
 .\boot_obj\xmodem.o: ..\src\perpherial\Inc\crc.h
+.\boot_obj\xmodem.o: ..\src\perpherial\Inc\flash.h

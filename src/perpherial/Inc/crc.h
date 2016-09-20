@@ -69,7 +69,7 @@ void crc32Init(void);
  *
  * @return  check result
  */
-uint32_t crc32(uint32_t* dataBuffer, uint32_t length);
+uint32_t crc32(uint8_t* dataBuffer, uint32_t length);
 
 #endif  /* __CRC_H */
 
