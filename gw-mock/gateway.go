@@ -271,10 +271,10 @@ func (s *SerialSender) send(frameFype byte, data []byte, devaddr []byte) error {
 	if n != len(payload) {
 		return errors.New("send number error")
 	}
-	//if len(data) < 30 {
+	if len(data) < 50 {
 		fmt.Printf("send\t")
 		printHex(payload)
-	//}
+	}
 	return nil
 }
 

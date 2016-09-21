@@ -43,28 +43,15 @@ void setCrc(void);
  *          wordsLength: the length of the array.
  * @return  state of option
  */
-uint8_t state;
-uint8_t buf[64], i;
 int main(void)
-{   
-    uint32_t tmp;
+{
     HAL_Init();
     clkConfig();
     BSP_LED_Init(LED3);
     BSP_LED_Init(LED4);
     InitUart1();
     crc32Init();
-    
-    tmp = *(uint32_t*)buf;
-    tmp = *(uint32_t*)(buf+3);
-    
-//    flashPageErase(0x08003000, 256);
-//    state = flashHalfPageWrite(0x08003000, (uint32_t*)buf);
-//    state = flashHalfPageWrite(0x08003000+128, (uint32_t*)buf);
-//    if ( state != 0) {          
-//        while(1) ;
-//    }
-    
+     
     ota();
 
     while (1) {

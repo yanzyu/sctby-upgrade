@@ -115,18 +115,19 @@ void ota(void) {
                 FlashIndex = ModuleAddr;       
                 
                 // prepare the flash
-                //flashPageErase(ModuleAddr, ModuleSize);
+                flashPageErase(ModuleAddr, ModuleSize);
                 // xmodem transfer
                 xState = XmodemReceive(&XmodemInitStrcut);
                 if (xState != XmodemOK) {
                     // enter error mode
-                    BSP_LED_On(LED3);
                 }
                 
                 // check the module
                 if (crc32((uint8_t*)ModuleAddr, ModuleSize) != ModuleCrc32) {
                     // enter error mode
                     BSP_LED_On(LED4);
+                } else {
+                    BSP_LED_On(LED3);
                 }
             } else if (buf[0] == DEV_JUMP) {
                 while (oTrue) { }
@@ -265,17 +266,16 @@ void XmodemWrite(uint8_t *pBuf, uint8_t len) {
 }
 
 XmodemBool XmodemCallBack(uint8_t *pBuf) {
-    int i;
     uint8_t buf[HALF_PAGE_SIZE];
-    memcpy(buf, pBuf, HALF_PAGE_SIZE);
     
-    flashPageErase(FlashIndex, HALF_PAGE_SIZE * 2);
     // received a 128-bytes update packet using xmodem
     // write the update packet into flash
+    memcpy(buf, pBuf, HALF_PAGE_SIZE);
     flashHalfPageWrite(FlashIndex, (uint32_t*)buf);
     FlashIndex += HALF_PAGE_SIZE;    // point to next half page
-    flashHalfPageWrite(FlashIndex, (uint32_t*)(pBuf + HALF_PAGE_SIZE));
     
+    memcpy(buf, pBuf+HALF_PAGE_SIZE, HALF_PAGE_SIZE);
+    flashHalfPageWrite(FlashIndex, (uint32_t*)buf);
     FlashIndex += HALF_PAGE_SIZE;    // point to next half page
     return xTrue;
 }
