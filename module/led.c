@@ -13,7 +13,7 @@ void ledOff(void);
 void ledToggle(void);
 void ledBlink(void);
 
-const Led_t Led __attribute__((at(LED_RO_Base))) = {
+const Led_t Led __attribute__((at(LED_RO_BASE))) = {
     ledInit,
     ledOn,
     ledOff,
@@ -29,14 +29,14 @@ const Led_t Led __attribute__((at(LED_RO_Base))) = {
 void ledInit() {
 /* (1) Enable the peripheral clock of GPIOB */
     RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
-    /* (2) Set output mode, PB4 */
-    GPIOB->MODER = (GPIOB->MODER & ~(GPIO_MODER_MODE4)) | (GPIO_MODER_MODE4_0);
+    /* (2) Set output mode, PB6 */
+    GPIOB->MODER = (GPIOB->MODER & ~(GPIO_MODER_MODE6)) | (GPIO_MODER_MODE6_0);
     /* (3) Set PULLUP mode */
-    GPIOB->PUPDR = (GPIOB->PUPDR & ~(GPIO_PUPDR_PUPD4)) | (GPIO_PUPDR_PUPD4_0);
+    GPIOB->PUPDR = (GPIOB->PUPDR & ~(GPIO_PUPDR_PUPD6)) | (GPIO_PUPDR_PUPD6_0);
     /* (4) Set FAST mode */
-    GPIOB->OSPEEDR = (GPIOB->OSPEEDR | GPIO_OSPEEDER_OSPEED4);
-    /* (5) Set push-pull mode, PB4 */
-    GPIOB->OTYPER = (GPIOB->OTYPER & ~(GPIO_OTYPER_OT_4));
+    GPIOB->OSPEEDR = (GPIOB->OSPEEDR | GPIO_OSPEEDER_OSPEED6);
+    /* (5) Set push-pull mode, PB6 */
+    GPIOB->OTYPER = (GPIOB->OTYPER & ~(GPIO_OTYPER_OT_6));
 }
 
 void ledOn() {

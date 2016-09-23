@@ -17,7 +17,7 @@ Library Manager: ArmAr.exe V5.06 update 2 (build 183)
 Hex Converter:   FromElf.exe V5.06 update 2 (build 183)
 CPU DLL:         SARMCM3.DLL V5.20
 Dialog DLL:      DARMCM1.DLL V1.14.0.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Target DLL:      UL2CM3.DLL V1.157.18.0
 Dialog DLL:      TARMCM1.DLL V1.10.0.0
  
 <h2>Project:</h2>
@@ -27,13 +27,15 @@ Project File Date:  09/12/2016
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'application'
-compiling appConfig.c...
-compiling led.c...
+compiling stm32l0xx_it.c...
+compiling uart.c...
 compiling app_main.c...
 compiling bsw.c...
 linking...
-Program Size: Code=3480 RO-data=404 RW-data=76 ZI-data=1076  
+Program Size: Code=3332 RO-data=388 RW-data=76 ZI-data=1076  
 FromELF: creating hex file...
+After Build - User command #1: D:\GitHub\sctby-upgrade\MDK-ARM\createFirm.bat
+D:\GitHub\sctby-upgrade\MDK-ARM>"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" --bin ".\app_obj\application.axf"  --output firmware\app 
 ".\app_obj\application.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>

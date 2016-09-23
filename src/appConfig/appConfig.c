@@ -3,13 +3,13 @@
 #include "scatterConfig.h"
 
 const moduleInfo_t moduleTab[MODULE_ID_COUNT] = {
-    { INIT_RO_Base,    INIT_RO_Size,  ((INIT_Ver_MAJOR << 8) | INIT_Ver_MINOR), 0x00    },
-    { DESC_RO_Base,    DESC_RO_Size,  ((DESC_Ver_MAJOR << 8) | DESC_Ver_MINOR), 0x00    },
-    { BSW_RO_Base,     BSW_RO_Size,   ((BSW_Ver_MAJOR << 8) | BSW_Ver_MINOR),   0x00    },
-    { LED_RO_Base,     LED_RO_Size,   ((LED_Ver_MAJOR << 8) | LED_Ver_MINOR),   0x00    }
+    { INIT_RO_BASE,    INIT_RO_SIZE,  ((INIT_Ver_MAJOR << 8) | INIT_Ver_MINOR)  },
+    { DESC_RO_BASE,    DESC_RO_SIZE,  ((DESC_Ver_MAJOR << 8) | DESC_Ver_MINOR)  },
+    { BSW_RO_BASE,     BSW_RO_SIZE,   ((BSW_Ver_MAJOR << 8) | BSW_Ver_MINOR)    },
+    { LED_RO_BASE,     LED_RO_SIZE,   ((LED_Ver_MAJOR << 8) | LED_Ver_MINOR)    }
 };
 
-const moduleDesc_t desc __attribute__((at(DESC_RO_Base))) = {
+const moduleDesc_t desc __attribute__((at(DESC_RO_BASE))) = {
     ((Ver_MAJOR << 8) | Ver_MINOR),
     MODULE_ID_COUNT,
     (moduleInfo_t*) moduleTab

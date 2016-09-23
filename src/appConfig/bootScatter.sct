@@ -9,13 +9,13 @@
 ; *************************************************************
 ; *** Application INIT module *********************************
 ; *************************************************************
-INIT_ROM        INIT_RO_Base    INIT_RO_Size  {     ; load region size_region
-    INIT_EROM   INIT_RO_Base    INIT_RO_Size  {     ; load address = execution address
+INIT_ROM        INIT_RO_BASE    INIT_RO_SIZE  {     ; load region SIZE_region
+    INIT_EROM   INIT_RO_BASE    INIT_RO_SIZE  {     ; load address = execution address
         *.o (RESET, +First)
         *(InRoot$$Sections)
         app_main.o (+RO)
     }
-    INIT_ERAM   INIT_RW_Base    INIT_RW_Size  {     ; load address = execution address
+    INIT_ERAM   INIT_RW_BASE    INIT_RW_SIZE  {     ; load address = execution address
         app_main.o (+RW +ZI)
     }
 }
@@ -23,8 +23,8 @@ INIT_ROM        INIT_RO_Base    INIT_RO_Size  {     ; load region size_region
 ; *************************************************************
 ; *** Application DESC module *********************************
 ; *************************************************************
-DESC_LROM       DESC_RO_Base    DESC_RO_Size  {     ; load region size_region
-    DESC_EROM   DESC_RO_Base    DESC_RO_Size  {     ; load address = execution address
+DESC_LROM       DESC_RO_BASE    DESC_RO_SIZE  {     ; load region SIZE_region
+    DESC_EROM   DESC_RO_BASE    DESC_RO_SIZE  {     ; load address = execution address
         appconfig.o(+RO)
     }
 }
@@ -32,11 +32,11 @@ DESC_LROM       DESC_RO_Base    DESC_RO_Size  {     ; load region size_region
 ; *************************************************************
 ; *** Application BSW module *********************************
 ; *************************************************************
-BSW_LROM        BSW_RO_Base     BSW_RO_Size  {      ; load region size_region
-    BSW_EROM    BSW_RO_Base     BSW_RO_Size  {      ; load address = execution address
+BSW_LROM        BSW_RO_BASE     BSW_RO_SIZE  {      ; load region SIZE_region
+    BSW_EROM    BSW_RO_BASE     BSW_RO_SIZE  {      ; load address = execution address
         .ANY (+RO)
     }
-    BSW_ERAM    BSW_RW_Base     BSW_RW_Size {
+    BSW_ERAM    BSW_RW_BASE     BSW_RW_SIZE {
         .ANY (+RW +ZI)
     }
 }
@@ -44,8 +44,8 @@ BSW_LROM        BSW_RO_Base     BSW_RO_Size  {      ; load region size_region
 ; *************************************************************
 ; *** Application LED module *********************************
 ; *************************************************************
-LED_LROM        LED_RO_Base     LED_RO_Size  {      ; load region size_region
-    LED_EROM    LED_RO_Base     LED_RO_Size  {      ; load address = execution address
+LED_LROM        LED_RO_BASE     LED_RO_SIZE  {      ; load region SIZE_region
+    LED_EROM    LED_RO_BASE     LED_RO_SIZE  {      ; load address = execution address
         led.o (+RO)
     }
 }

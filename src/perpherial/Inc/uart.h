@@ -24,7 +24,7 @@
 /***************************************************************************************************
  * MACRO
  */
-#define UART_BAUD	9600
+#define UART_BAUD	115200
 #define UartMaxSize 256
 
 void InitUart1(void);

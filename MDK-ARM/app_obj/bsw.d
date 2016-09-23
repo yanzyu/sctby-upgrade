@@ -3,12 +3,8 @@
 .\app_obj\bsw.o: ..\src\appConfig\scatterConfig.h
 .\app_obj\bsw.o: ..\module\bsw.h
 .\app_obj\bsw.o: ..\src\perpherial\Inc\crc.h
-.\app_obj\bsw.o: ..\src\hal_driver\Inc\stm32l0xx_hal.h
-.\app_obj\bsw.o: ..\src\user\application\stm32l0xx_hal_conf.h
-.\app_obj\bsw.o: ..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h
-.\app_obj\bsw.o: ..\src\hal_driver\Inc\stm32l0xx_hal_def.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h
-.\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l053xx.h
+.\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l051xx.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h
@@ -16,6 +12,10 @@
 .\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\system_stm32l0xx.h
 .\app_obj\bsw.o: ..\src\hal_driver\Inc\stm32l0xx_hal.h
+.\app_obj\bsw.o: ..\src\user\application\stm32l0xx_hal_conf.h
+.\app_obj\bsw.o: ..\src\hal_driver\Inc\STM32L0xx_hal_rcc.h
+.\app_obj\bsw.o: ..\src\hal_driver\Inc\stm32l0xx_hal_def.h
+.\app_obj\bsw.o: C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h
 .\app_obj\bsw.o: ..\src\hal_driver\Inc\Legacy/stm32_hal_legacy.h
 .\app_obj\bsw.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\app_obj\bsw.o: ..\src\hal_driver\Inc\stm32l0xx_hal_rcc_ex.h

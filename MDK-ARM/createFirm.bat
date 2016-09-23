@@ -1,0 +1,1 @@
+"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" --bin ".\app_obj\application.axf"  --output firmware\app

@@ -4,7 +4,7 @@
 
 void HalInit(void);
 
-const Bsw_t Bsw __attribute__((at(BSW_RO_Base))) = {
+const Bsw_t Bsw __attribute__((at(BSW_RO_BASE))) = {
     .HalInit    = HalInit,
     .ClkConfig  = clkConfig,
     .GetTick    = HAL_GetTick,

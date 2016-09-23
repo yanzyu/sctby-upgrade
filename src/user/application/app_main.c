@@ -21,7 +21,7 @@
 #include "led.h"
 #include "bsw.h"
 
-const moduleDesc_t *desc_t = (moduleDesc_t*)(DESC_RO_Base);
+const moduleDesc_t *desc_t = (moduleDesc_t*)(DESC_RO_BASE);
 const Bsw_t *bsw;
 const Led_t *led;
 uint8_t buf[9];    
@@ -83,9 +83,7 @@ int main(void)
         bsw->UartSendString("\r\nmodule version:  \t0x");
         bsw->UartSend(num2str(desc_t->module[i].ver), 9);
         bsw->UartSendString("\r\nmodule crc check:\t0x");
-        bsw->UartSend(num2str(desc_t->module[i].crc), 9);
     }
-    
     
     while (1) {
         delayMs(1000);

@@ -101,7 +101,8 @@ func (s *SerialSender) respSN(info UpdateInfo, crc uint32) {
 	}
 
 	payload := []byte{}
-	payload = append(payload, 0x01)
+	//payload = append(payload, 0x01)
+	payload = append(payload, 0x02)
 	firmAddr, err := hex.DecodeString(info.FirmAddr)
 	if err != nil {
 		fmt.Println(err.Error())
