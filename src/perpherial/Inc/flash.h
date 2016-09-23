@@ -54,7 +54,7 @@
 
 
 #define FLASH_SR_FWWERR ((uint32_t)0x00020000)
-
+#define FLASH_PAGE_SIZE            ((uint32_t)128)
 
 /***************************************************************************************************
  * MACRO
@@ -62,6 +62,9 @@
 #define HALF_PAGE_SIZE                0x40
 #define HALF_PAGE_WORD                (HALF_PAGE_SIZE / 4)
  
+#define FLASH_TIMEOUT ((uint32_t)50000)
+#define flashGetFlag(__FLAG__)   (((FLASH->SR) & (__FLAG__)) == (__FLAG__)) 
+
 /***************************************************************************************************
  * GLOBAL FUNCTIONS DECLEAR
  *
@@ -77,7 +80,7 @@
  * 					wordsLength: the number of words need to be erased.
  * @return  state of option
  */
-uint16_t flashPageErase(uint32_t pageStart, uint32_t length);
+uint16_t FlashPageErase(uint32_t pageStart, uint32_t length);
 
 /***************************************************************************************************
  * @fn      flashHalfPageWrite()
@@ -92,11 +95,11 @@ uint16_t flashPageErase(uint32_t pageStart, uint32_t length);
  *          wordsLength: the length of the array.
  * @return  state of option
  */
-uint16_t flashHalfPageWrite(uint32_t flash_addr, uint32_t *data);
+uint16_t FlashHalfPageWrite(uint32_t flash_addr, uint32_t *data);
 
-uint8_t flashUnlock(void);
+uint8_t FlashUnlock(void);
 
-uint8_t flashLock(void);
+uint8_t FlashLock(void);
 
 #endif  /* __FLASH_H */
 

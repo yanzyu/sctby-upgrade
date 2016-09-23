@@ -124,10 +124,13 @@ func (s *SerialSender) respSN(info UpdateInfo, crc uint32) {
 var COM string
 // Sender is a uart Sender
 var Sender *SerialSender
+// Sender is a uart Sender
+var BaudRate int
 
 func main() {
 	
 	flag.StringVar(&COM, "com", "COM5", "get the serial com")
+	flag.IntVar(&BaudRate, "baudrate", 9600, "get the baudrate")
 	flag.StringVar(&ConfigFile, "config", "config.json", "get the config")
 	flag.Parse()
 	// step 1: read the config file
@@ -145,7 +148,7 @@ func main() {
 	// step 3: open the COM
 	config := &serial.Config{
 		Name:        COM,
-		Baud:        9600,
+		Baud:        BaudRate,
 		ReadTimeout: time.Millisecond * 100,
 	}
 	port, err := serial.OpenPort(config)
@@ -210,6 +213,7 @@ func (s *SerialSender) xmodem(buf []byte, info UpdateInfo) bool {
 			break
 		}
 
+		fmt.Printf("send packet:%d\n", pktnum)
 		if (int(pktnum) * PktSize) > len(buf) {
 			s.xmodemSend(buf[int(pktnum-1)*PktSize:len(buf)], pktnum, addr)
 		} else {
@@ -382,10 +386,10 @@ func (s *SerialSender) read(addr []byte, length int, timeout time.Duration) ([]b
 		return data, err
 	}
 
-	if (len(data) > 0 && length < 133) {
+	//if (len(data) > 0 && length < 133) {
 		fmt.Printf("receive\t")
 		printHex(data)
-	}
+	//}
 
 	if len(data) > 11 {
 		return data[11:len(data)], err

@@ -1,1 +1,1 @@
-./gateway.exe -com="COM5" -config="task.json"
+./gateway.exe -com="COM5" -baudrate=115200 -config="task.json"

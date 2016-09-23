@@ -17,58 +17,78 @@
  */
 #include "flash.h"
 
-uint16_t flashHalfPageWrite(uint32_t flash_addr, uint32_t *data) {    
-    uint8_t i;
-    uint16_t error;
+static uint8_t RAM_FlashWaitForLastOperation(uint32_t Timeout)
+{ 
+    /* Wait for the FLASH operation to complete by polling on BUSY flag to be reset.
+       Even if the FLASH operation fails, the BUSY flag will be reset and an error
+       flag will be set */
+       
+    while(flashGetFlag(FLASH_SR_BSY) && (Timeout != 0x00)) { 
+        Timeout--;
+    }
     
-    flashUnlock();
-    /* (1) Set the PROG and FPRG bits in the FLASH_PECR register 
-         to enable a half page programming */
-    /* (2) Perform the data write (half-word) at the desired address */
-    /* (3) Wait until the BSY bit is reset in the FLASH_SR register */
-    /* (4) Check the EOP flag in the FLASH_SR register */
-    /* (5) clear it by software by writing it at 1 */
-    /* (6) Reset the PROG and FPRG bits to disable programming */
-    FLASH->PECR |= FLASH_PECR_PROG | FLASH_PECR_FPRG; /* (1) */
-    for (i = 0; i < HALF_PAGE_SIZE; i+=4, data++) {
-        *(__IO uint32_t*)(flash_addr + i) = *data; /* (2) */
+    if(Timeout == 0x00 ) {
+      return 0;
     }
-    while ((FLASH->SR & FLASH_SR_BSY) != 0) { /* (3) */
-    /* For robust implementation, add here time-out management */
-    }  
-    if ((FLASH->SR & FLASH_SR_EOP) != 0) { /* (4) */
-        FLASH->SR = FLASH_SR_EOP; /* (5) */
-    }
-    /* Manage the error cases */
-    else if ((FLASH->SR & FLASH_SR_FWWERR) != 0) { /* Check Fetch while Write error */
-        error |= ERROR_FETCH_DURING_PROG; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_FWWERR; /* Clear the flag by software by writing it at 1*/
-    }
-    else if ((FLASH->SR & FLASH_SR_NOTZEROERR) != 0) { /* Check Not Zero error */
-        /* This error occurs if the address content was not cleared/erased 
-         before the programming */
-        error |= ERROR_NOT_ZERO; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_NOTZEROERR; /* Clear the flag by software by writing it at 1*/
-    }
-    else if ((FLASH->SR & FLASH_SR_SIZERR) != 0) { /* Check Size error */
-        error |= ERROR_SIZE; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_SIZERR; /* Clear the flag by software by writing it at 1*/
-    }
-    else if ((FLASH->SR & FLASH_SR_WRPERR) != 0) { /* Check Write protection error */
-        error |= ERROR_WRITE_PROTECTION; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_WRPERR; /* Clear the flag by software by writing it at 1*/
-    }
-    else if ((FLASH->SR & FLASH_SR_PGAERR) != 0) { /* Check half-page alignment error */
-        error |= ERROR_ALIGNMENT; 
-        FLASH->SR = FLASH_SR_PGAERR; /* Clear it by software by writing it at 1*/
-    }
-    else {
-        error |= ERROR_UNKNOWN; 
-    }
-    FLASH->PECR &= ~(FLASH_PECR_PROG | FLASH_PECR_FPRG); /* (6) */
     
-    flashLock();
-    return error;
+    if( (flashGetFlag(FLASH_SR_RDERR)      != RESET) || 
+        (flashGetFlag(FLASH_SR_WRPERR)     != RESET) || 
+        (flashGetFlag(FLASH_SR_PGAERR)     != RESET) || 
+#if defined(STM32L031xx) || defined(STM32L041xx)
+#else
+        (flashGetFlag(FLASH_SR_OPTVERR)    != RESET) || 
+#endif
+        (flashGetFlag(FLASH_SR_SIZERR)     != RESET) || 
+        (flashGetFlag(FLASH_SR_FWWERR)     != RESET) || 
+        (flashGetFlag(FLASH_SR_NOTZEROERR) != RESET) )
+    {
+
+      return 0;
+    }
+  
+    /* If there is an error flag set */
+    return 1;
+}
+
+uint16_t FlashHalfPageWrite(uint32_t flash_addr, uint32_t *data) {    
+    uint32_t count; 
+    uint8_t status;
+
+    FlashUnlock();
+    /* Wait for last operation to be completed */
+    status = RAM_FlashWaitForLastOperation(FLASH_TIMEOUT);
+
+    if(status == 1) {
+        /* Proceed to program the new half page */
+        SET_BIT(FLASH->PECR, FLASH_PECR_FPRG);
+        SET_BIT(FLASH->PECR, FLASH_PECR_PROG);
+
+        count = 0;
+        /* Write one half page,
+        Address doesn't need to be increased */ 
+
+        /* Disable all IRQs */
+        __disable_irq();
+
+        while(count < 16) {
+            *(__IO uint32_t*) flash_addr = *data;
+            data++;
+            count++;
+        }
+
+        /* Enable IRQs */
+        __enable_irq();
+  
+        /* Wait for last operation to be completed */
+        status = RAM_FlashWaitForLastOperation(FLASH_TIMEOUT);
+
+        /* If the write operation is completed, disable the PROG and FPRG bits */
+        CLEAR_BIT(FLASH->PECR, FLASH_PECR_PROG);
+        CLEAR_BIT(FLASH->PECR, FLASH_PECR_FPRG);
+    }
+    FlashLock();
+    /* Return the write status */
+    return 1;
 }
 
 /***************************************************************************************************

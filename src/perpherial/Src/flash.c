@@ -16,28 +16,65 @@
  * INCLUDES
  */
 #include "flash.h"
-
-volatile uint16_t error;
+#include "REG_SysTick.h"
 
 /***************************************************************************************************
  * PRIVATE FUNCTIONS DECLEAR
  *
 ***************************************************************************************************/
-static uint8_t waitOpDone() {
-    /* Wait till no operation is on going */
-    while ((FLASH->SR & FLASH_SR_BSY) != 0) /* (1) */  
-    {
-    /* For robust implementation, add here time-out management */
-    }
-    return 0;
+
+static void flashErase(uint32_t page_addr) {   
+    /* Set the ERASE bit */
+    SET_BIT(FLASH->PECR, FLASH_PECR_ERASE); 
+    /* Set PROG bit */
+    SET_BIT(FLASH->PECR, FLASH_PECR_PROG);
+    /* Write 00000000h to the first word of the program page to erase */
+    *(__IO uint32_t *)page_addr = 0x00000000;
 }
 
-uint8_t flashUnlock() {
-    waitOpDone();
-    /* unlocks the NVM */
-    if((FLASH->PECR & FLASH_PECR_PRGLOCK) != 0) {
+static uint8_t FlashWaitOpDone(uint32_t Timeout) {
+    uint32_t tickstart = REG_GetTick();   
+     
+    while(flashGetFlag(FLASH_SR_BSY) != RESET) { 
+        if(Timeout != 0xFFFFFFFF) {
+            if((Timeout == 0)||((REG_GetTick() - tickstart ) > Timeout)) {
+                return 0;
+            }
+        } 
+    }
+    /* Check FLASH End of Operation flag  */
+    if (flashGetFlag(FLASH_SR_EOP)) {
+        /* Clear FLASH End of Operation pending bit */
+        FLASH->SR = (FLASH_SR_EOP);
+    }
+  
+#if defined(STM32L031xx) || defined(STM32L041xx)
+    if((flashGetFlag(FLASH_SR_WRPERR) != RESET) || (flashGetFlag(FLASH_SR_PGAERR)  != RESET) || \
+        (flashGetFlag(FLASH_SR_SIZERR) != RESET) || \
+        (flashGetFlag(FLASH_SR_RDERR)  != RESET) || (flashGetFlag(FLASH_SR_FWWERR)  != RESET) || \
+        (flashGetFlag(FLASH_SR_NOTZEROERR) != RESET))
+#else
+    if((flashGetFlag(FLASH_SR_WRPERR) != RESET) || (flashGetFlag(FLASH_SR_PGAERR)  != RESET) || \
+        (flashGetFlag(FLASH_SR_SIZERR) != RESET) || (flashGetFlag(FLASH_SR_OPTVERR) != RESET) || \
+        (flashGetFlag(FLASH_SR_RDERR)  != RESET) || (flashGetFlag(FLASH_SR_FWWERR)  != RESET) || \
+        (flashGetFlag(FLASH_SR_NOTZEROERR) != RESET))
+#endif
+    {
+        return 0;
+    }
+
+    /* There is no error flag set */
+    return 1;  
+}
+
+/***************************************************************************************************
+ * GLOBAL FUNCTIONS DECLEAR
+ *
+***************************************************************************************************/
+uint8_t FlashUnlock() {
+    if((FLASH->PECR & FLASH_PECR_PRGLOCK) != RESET) {
         /* Unlocking FLASH_PECR register access */
-        if((FLASH->PECR & FLASH_PECR_PELOCK) != 0) {  
+        if((FLASH->PECR & FLASH_PECR_PELOCK) != RESET) {  
             FLASH->PEKEYR = FLASH_PEKEY1;
             FLASH->PEKEYR = FLASH_PEKEY2;
         }
@@ -45,60 +82,17 @@ uint8_t flashUnlock() {
         FLASH->PRGKEYR = FLASH_PRGKEY1;
         FLASH->PRGKEYR = FLASH_PRGKEY2;  
     } else {
-        return 1;
+        return 0;
     }
-
-    return 0; 
+    return 1; 
 }
 
-uint8_t flashLock() {
-    waitOpDone();
+uint8_t FlashLock() {
     /* lock the flash */
-    FLASH->PECR |= FLASH_PECR_PELOCK;
-    return 0; 
+    SET_BIT(FLASH->PECR, FLASH_PECR_PRGLOCK);
+    return 1; 
 }
 
-static uint16_t FlashErase(uint32_t page_addr)
-{   
-    /* (1) Set the ERASE and PROG bits in the FLASH_PECR register 
-         to enable page erasing */
-    /* (2) Write a 32-bit word value in an address of the selected page 
-         to start the erase sequence */
-    /* (3) Wait until the BSY bit is reset in the FLASH_SR register */
-    /* (4) Check the EOP flag in the FLASH_SR register */
-    /* (5) Clear EOP flag by software by writing EOP at 1 */
-    /* (6) Reset the ERASE and PROG bits in the FLASH_PECR register 
-         to disable the page erase */
-    FLASH->PECR |= FLASH_PECR_ERASE | FLASH_PECR_PROG; /* (1) */    
-    *(__IO uint32_t *)page_addr = (uint32_t)0; /* (2) */    
-    while ((FLASH->SR & FLASH_SR_BSY) != 0) { /* (3) */ 
-        /* For robust implementation, add here time-out management */
-    }  
-    if ((FLASH->SR & FLASH_SR_EOP) != 0) { /* (4) */ 
-        FLASH->SR = FLASH_SR_EOP; /* (5)*/
-    }  /* Manage the error cases */
-    else if ((FLASH->SR & FLASH_SR_FWWERR) != 0) { /* Check Fetch while Write error */
-        error |= ERROR_FETCH_DURING_ERASE; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_FWWERR; /* Clear the flag by software by writing it at 1*/
-    } else if ((FLASH->SR & FLASH_SR_SIZERR) != 0) { /* Check Size error */ 
-        error |= ERROR_SIZE; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_SIZERR; /* Clear the flag by software by writing it at 1*/
-    } else if ((FLASH->SR & FLASH_SR_WRPERR) != 0) { /* Check Write protection error */
-        error |= ERROR_WRITE_PROTECTION; /* Report the error to the main progran */
-        FLASH->SR = FLASH_SR_WRPERR; /* Clear the flag by software by writing it at 1*/
-    } else {
-        //error;
-        //error |= ERROR_UNKNOWN; /* Report the error to the main progran */
-    }
-    FLASH->PECR &= ~(FLASH_PECR_ERASE | FLASH_PECR_PROG); /* (6) */
-    return error;
-}
-
-
-/***************************************************************************************************
- * GLOBAL FUNCTIONS DECLEAR
- *
-***************************************************************************************************/
 /***************************************************************************************************
  * @fn      flashPageErase()
  *
@@ -110,19 +104,34 @@ static uint16_t FlashErase(uint32_t page_addr)
  * 					Length: 	 the number of bytes need to be erased.
  * @return  state of option
  */
-uint16_t flashPageErase(uint32_t pageStart, uint32_t length) {
-    uint32_t i;
-    if (length % FLASH_PAGE_SIZE != 0) {
-        return ERROR_SIZE;
+uint16_t FlashPageErase(uint32_t pageStart, uint32_t length) {
+    uint32_t index = 0;
+    uint8_t status;
+    FlashUnlock();
+    if (FlashWaitOpDone(FLASH_TIMEOUT) == 1) {
+        if ((pageStart % FLASH_PAGE_SIZE) != 0) {
+            FlashLock();
+            return 0;
+        }
+        /* Erase by sector by sector to be done*/
+        for(index = pageStart; index < (length+ pageStart); index += FLASH_PAGE_SIZE) {        
+            flashErase(index);
+
+            /* Wait for last operation to be completed */
+            status = FlashWaitOpDone(FLASH_TIMEOUT);
+            
+            /* If the erase operation is completed, disable the ERASE Bit */
+            CLEAR_BIT(FLASH->PECR, FLASH_PECR_PROG);
+            CLEAR_BIT(FLASH->PECR, FLASH_PECR_ERASE);
+
+            if (status != 1) {
+                FlashLock();
+                return 0;
+            }
+        }
     }
-    flashUnlock();
-    
-    for (i = 0; i < length / FLASH_PAGE_SIZE; i++) {
-        FlashErase(pageStart + i * FLASH_PAGE_SIZE);
-    }
-    
-    flashLock();
-    return 0;
+    FlashLock();
+    return 1;
 }	
 
 /***************************************************************************************************
