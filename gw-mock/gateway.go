@@ -5,8 +5,8 @@ import (
 	"os"
 	"flag"
 	"bytes"
-	"encoding/binary"
 	"encoding/hex"
+	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -16,11 +16,29 @@ import (
 	"time"
 )
 
-type UpdateInfo struct {
-	DevEUI    	string  `full:"DevEUI" json:"deveui"`       // the short-address of the device to be updated
-	FirmName	string	`full:"FirmName" json:"firmname"`
-	FirmAddr	string	`full:"FirmAddr" json:"firmaddr"`
-	FirmSize	uint32	`full:"FirmSize" json:"firmsize"`
+
+type Module_t struct {
+	Name		string  `full:"Name" json:"name"`
+	Addr		string	`full:"Addr" json:"addr"`
+	Data		[]byte	`full:"Data" json:"data, omitempty"`
+	Size		uint32	`full:"Size" json:"size, omitempty"`
+	Crc32		uint32	`full:"Crc32" json:"crc32, omitempty"`
+}
+
+type Sensor_t struct {
+	DevEUI		string	 	`full:"DevEUI" json:"deveui"`
+	Time		time.Time	`full:"Time" json:"time, omitempty"`	// not add time out now
+	TimeOut		time.Time	`full:"TimeOut" json:"timeout, omitempty"`	// not add time out now
+	Status		int			`full:"Status" json:"status, omitempty"`
+}
+
+type Task_t struct {
+	Version		string		`full:"Version" json:"version"`
+	Address 	string		`full:"Address" json:"address"`
+	Size		string		`full:"Size" json:"size"`
+	Crc32		string		`full:"Crc32" json:"crc32"`
+	Module		[]Module_t	`full:"Module" json:"module"`
+	Sensor		[]Sensor_t	`full:"Sensor" json:"sensor"`
 }
 
 type SerialSender struct {
@@ -38,6 +56,12 @@ const (
 	SN_REQ    = 0x01
 	GW_RESP   = 0x02
 	RF_DATA   = 0x03
+)
+
+const (
+	CMD_UPGRADE = 0x01
+	CMD_JUMP  	= 0x02
+	CMD_SLEEP   = 0x03
 )
 
 const (
@@ -59,67 +83,121 @@ const (
 
 // COM is the serial port of uart
 var ConfigFile string
-func readConfig() (info UpdateInfo) {
+func readConfig() (task Task_t, err error) {
 	config, err := ioutil.ReadFile(ConfigFile)
 	if err != nil {
 		fmt.Printf("file:%s, error:%s\n", ConfigFile, err.Error())
-		return
+		return Task_t{}, err
 	}
-	err = json.Unmarshal(config, &info)
+	err = json.Unmarshal(config, &task)
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		return Task_t{}, err
 	}
-	return info
+	for _, s := range task.Sensor {
+		s.Status = 0
+	}
+	/* for test */
+	fmt.Println("received an ota task")
+	fmt.Printf("version:%s, address:%s, crc32:%s\n", task.Version, task.Address, task.Crc32)
+	fmt.Println("Infomation of modules to be upgrade:")
+	for _, m := range task.Module {
+		fmt.Printf("name:%s\taddress:%s\n", m.Name, m.Addr)
+	}
+	fmt.Println("Infomation of sensors to be upgrade:")
+	for _, s := range task.Sensor {
+		fmt.Printf("DevEUI:%s\n", s.DevEUI)
+	}
+
+	return task, nil
 }
 
 // wait ota request
-func (s *SerialSender) waitForReq(info UpdateInfo) bool {
-	addr, err := hex.DecodeString(info.DevEUI)
+func (s *SerialSender) waitForReq(task *Task_t) (bool, int) {
+
+	cmd, err := s.read(nil, 7, time.Second*10)
 	if err != nil {
 		fmt.Println(err.Error())
-		return false
+		return false, 0
 	}
-	cmd, err := s.read(addr, 7, time.Second*10)
-	if err != nil {
-		fmt.Println(err.Error())
-		return false
-	}
-	if len(cmd) < 6 {
+	if len(cmd) < 14 {
 		fmt.Println("not receive request")
+		return false, 0
+	}
+
+	devEui := cmd[1:9]
+	flag := cmd[9]
+	version := cmd[12:16]
+	if cmd[0] != RF_HEADER {
+		return false, 0
+	}
+	if flag != SN_REQ {
+		return false, 0
+	}
+	ok, index := hasSensor(task, devEui)
+	ver, err := hex.DecodeString(task.Version)
+	if err != nil {
+		fmt.Println(err.Error())
+		return false, 0
+	}
+	if !ok {
+		fmt.Printf("receive request from 0x")
+		for _, c := range devEui {
+			fmt.Printf("%02x", c)
+		}
+		fmt.Println(", which is not in upgrade task")
+		return false, 0
+	}
+	if bytes.Compare(version, ver) != 0 {
+		fmt.Printf("receive request of version 0x")
+		for _, c := range version {
+			fmt.Printf("%02x", c)
+		}
+		fmt.Println(", which is not target version")
+		return false, 0
+	}
+	
+	return true, index
+}
+
+func (s *SerialSender) respSN(task *Task_t, index int) bool {
+	/* (1) check whether complete */
+	devEui, err := hex.DecodeString(task.Sensor[index].DevEUI)
+	if err != nil {
+		fmt.Println(err.Error())
+		return  false
+	}
+	payload := []byte{}
+	if task.Sensor[index].Status == len(task.Module) {
+		// jump to application
+		payload = append(payload, CMD_JUMP)
+		appAddr, _ := hex.DecodeString(task.Address)
+		payload = append(payload, appAddr...)
+		appSize, _ := hex.DecodeString(task.Size)
+		payload = append(payload, appSize...)
+		appCrc, _ := hex.DecodeString(task.Crc32)
+		payload = append(payload, appCrc...)
+		s.send(GW_RESP, payload, devEui)
 		return false
 	}
-
-	return true;
-}
-
-func (s *SerialSender) respSN(info UpdateInfo, crc uint32) {
-	addr, err := hex.DecodeString(info.DevEUI)
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	payload := []byte{}
 	//payload = append(payload, 0x01)
-	payload = append(payload, 0x02)
-	firmAddr, err := hex.DecodeString(info.FirmAddr)
-	if err != nil {
+	payload = append(payload, CMD_UPGRADE)
+	addr, err := hex.DecodeString(task.Module[task.Sensor[index].Status].Addr)
+	for err != nil {
 		fmt.Println(err.Error())
-		return
+		return false
 	}
-	payload = append(payload, firmAddr...)
-	firmSize := make([]byte, 4)
-	binary.BigEndian.PutUint32(firmSize, info.FirmSize)
-	payload = append(payload, firmSize...)
-	Crc := make([]byte, 4)
-	binary.BigEndian.PutUint32(Crc, crc)
-	payload = append(payload, Crc...)
+	payload = append(payload, addr...)
+	buf := make([]byte, 4)
+	binary.BigEndian.PutUint32(buf, task.Module[task.Sensor[index].Status].Size)
+	fmt.Printf("module[%d] size = %x\tcrc32 = %x\n", task.Sensor[index].Status, task.Module[task.Sensor[index].Status].Size, task.Module[task.Sensor[index].Status].Crc32)
+	payload = append(payload, buf...)
+	binary.BigEndian.PutUint32(buf, task.Module[task.Sensor[index].Status].Crc32)
+	payload = append(payload, buf...)
 
-	s.send(GW_RESP, payload, addr)
+	s.send(GW_RESP, payload, devEui)
+	return true
 }
-
-
 
 // COM is the serial port of uart
 var COM string
@@ -135,17 +213,16 @@ func main() {
 	flag.StringVar(&ConfigFile, "config", "config.json", "get the config")
 	flag.Parse()
 	// step 1: read the config file
-	info := readConfig()
-	// step 2: read the firmware filef
-	fmt.Printf("firmware name:%s\n", info.FirmName)
-	firm, err := readFirm8(info.FirmName)
+	task, err := readConfig()
 	if err != nil {
-		fmt.Printf("file:%s, error:%s\n", info.FirmName, err.Error())
+		fmt.Println(err.Error())
 		return
 	}
-	crc := crc32.ChecksumIEEE(firm)
-	info.FirmSize = uint32(len(firm))
-	fmt.Printf("size:%4x, crc:%4x\n", info.FirmSize, crc)
+	// step 2: read the firmware file
+	if readFirm(&task) != true {
+		return
+	}
+
 	// step 3: open the COM
 	config := &serial.Config{
 		Name:        COM,
@@ -162,11 +239,17 @@ func main() {
 	// step 4 : ota upgrade
 	for {
 		// wait for sensor request ota
-		if Sender.waitForReq(info) {
+		ok, index := Sender.waitForReq(&task)
+		if ok {
 			// step 5: response the sensor
-			Sender.respSN(info, crc)
-			if Sender.xmodem(firm, info) {
-				fmt.Println("xmodem transfer complete")
+			if Sender.respSN(&task, index) {
+				fmt.Printf("start upgrade module[%d]:%s\n", task.Sensor[index].Status, task.Module[task.Sensor[index].Status].Name)
+				if Sender.xmodem(&task, index) {
+					task.Sensor[index].Status++
+					fmt.Println("xmodem transfer complete")
+				} else {
+					fmt.Println("xmodem transfer error")	
+				}	
 			}
 		}
 	}
@@ -174,15 +257,17 @@ func main() {
 
 
 
-func (s *SerialSender) xmodem(buf []byte, info UpdateInfo) bool {
-	addr, err := hex.DecodeString(info.DevEUI)
+func (s *SerialSender) xmodem(task *Task_t, index int) bool {
+	addr, err := hex.DecodeString(task.Sensor[index].DevEUI)
 	if err != nil {
 		fmt.Println(err.Error())
+		return false
 	}
-	fmt.Printf("device address = %s\n", info.DevEUI)
+	buf := task.Module[task.Sensor[index].Status].Data
+	fmt.Printf("upgrade module %d of sensor %d", task.Sensor[index].Status, index)
 
 	rtNum := 0;
-	fmt.Println("\nwaite for stating xmodem transfer...")
+	fmt.Println("waite for stating xmodem transfer...")
 	// step 2, wait for a xmodem start character
 	for {
 		rtNum ++
@@ -206,10 +291,10 @@ func (s *SerialSender) xmodem(buf []byte, info UpdateInfo) bool {
 	fmt.Printf("\nstart xmodem transfer...\n")
 	// step 3, send the file to sensor
 	pktnum := byte(1)
-	rttime := 0
+	rtNum = 0
 	for {
-		rttime++
-		if rttime >= RtNum {
+		rtNum++
+		if rtNum >= RtNum {
 			fmt.Println("retransmission more than 5 times")
 			break
 		}
@@ -238,7 +323,7 @@ func (s *SerialSender) xmodem(buf []byte, info UpdateInfo) bool {
 		}
 
 		if len(cmd) > 0 && cmd[0] == ACK {
-			rttime = 0
+			rtNum = 0
 			fmt.Printf("send %d packet sucessfully\n", pktnum)
 			if int(pktnum)*PktSize >= len(buf) {
 				fmt.Println("end of transmission")
@@ -249,7 +334,7 @@ func (s *SerialSender) xmodem(buf []byte, info UpdateInfo) bool {
 			continue
 		}
 
-		fmt.Println("unknown error")
+		fmt.Println("not received data")
 		continue
 	}
 	return true
@@ -313,7 +398,6 @@ func (s *SerialSender) xmodemSend(data []byte, num byte, devaddr []byte) (err er
 
 func (s *SerialSender) sendCmd(cmd []byte, devaddr []byte) (err error) {
 
-	fmt.Println("enter command send")
 	// construct the paylaod
 	payload := []byte{}
 
@@ -343,10 +427,6 @@ func (s *SerialSender) read(addr []byte, length int, timeout time.Duration) ([]b
 				return
 			}
 
-			// if n > 0 {
-			// 	data = append(data, buf[0:n]...)
-			// 	size += n
-			// }
 			data = append(data, buf[0:n]...)
 			size += n
 
@@ -357,12 +437,6 @@ func (s *SerialSender) read(addr []byte, length int, timeout time.Duration) ([]b
 			}
 
 			if size >= (length + 11) {
-				// check the packet
-				// if checkPacket(addr, data[0:size], RF_DATA) != true {
-				// 	size = 0
-				// 	data = []byte{}
-				// 	continue
-				// }
 				ch <- SerialOk
 				break
 			}
@@ -383,14 +457,12 @@ func (s *SerialSender) read(addr []byte, length int, timeout time.Duration) ([]b
 		err = nil
 	}
 
+	fmt.Printf("receive\t")
+	printHex(data)
+
 	if addr == nil {
 		return data, err
 	}
-
-	//if (len(data) > 0 && length < 133) {
-		fmt.Printf("receive\t")
-		printHex(data)
-	//}
 
 	if len(data) > 11 {
 		return data[11:len(data)], err
@@ -428,13 +500,13 @@ func checkPacket(addr []byte, data []byte, flag byte) bool {
 	return true
 }
 
-func readFirm8(entry string) (firm []byte, err error) {
+func readFirmByte(entry string) (firm []byte, err error) {
 
 	// open the file
 	f, err := os.Open(entry)
 	if err != nil {
 		fmt.Println(err)
-		return
+		return []byte{}, err
 	}
 	defer f.Close()
 
@@ -442,6 +514,44 @@ func readFirm8(entry string) (firm []byte, err error) {
 	rawBinary, err := ioutil.ReadAll(f)
 
 	return rawBinary, err
+}
+
+func readFirm(task *Task_t) bool {
+	var err error
+	//for i, t := range task.Module {
+	for i := 0; i < len(task.Module); i++ {
+		task.Module[i].Data, err = readFirmByte(task.Module[i].Name)
+		if err != nil {
+			fmt.Println(err.Error())
+			return false
+		}
+		if task.Module[i].Data == nil {
+			fmt.Println("Read empty firmware file.")
+			return false
+		}
+		task.Module[i].Size = uint32(len(task.Module[i].Data))
+		task.Module[i].Crc32 = crc32.ChecksumIEEE(task.Module[i].Data)
+		fmt.Printf("module[%d] size = %x, crc32 = %x\n", i, task.Module[i].Size, task.Module[i].Crc32)
+	}
+	return true
+}
+
+func hasSensor(task *Task_t, DevEUI	[]byte) (bool, int) {
+	if len(DevEUI) != 8 {
+		return false, 0
+	}
+	
+	for i := 0; i < len(task.Sensor); i++ {
+		devEui, err := hex.DecodeString(task.Sensor[i].DevEUI)
+		if err != nil {
+			fmt.Println(err.Error())
+			return false, 0
+		}
+		if bytes.Compare(DevEUI, devEui) == 0 	{
+			return true, i
+		}
+	}
+	return false, 0
 }
 
 func printHex(data []byte) {

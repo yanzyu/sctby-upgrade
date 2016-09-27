@@ -69,7 +69,7 @@ int main(void)
     
     bsw->HalInit();
     bsw->ClkConfig();
-    bsw->Uart1Init();
+//    bsw->Uart1Init();
     
     led->Init();
 
@@ -79,12 +79,12 @@ int main(void)
         led->Toggle();
     }
     
-    for (i = 0; i < desc_t->moduleCnt; i++) {
-        bsw->UartSendString("\r\nmodule version:  \t0x");
-        bsw->UartSend(num2str(desc_t->module[i].ver), 9);
-        bsw->UartSendString("\r\nmodule crc check:\t0x");
-    }
-    
+//    for (i = 0; i < desc_t->moduleCnt; i++) {
+//        bsw->UartSendString("\r\nmodule version:  \t0x");
+//        bsw->UartSend(num2str(desc_t->module[i].ver), 9);
+//        bsw->UartSendString("\r\nmodule crc check:\t0x");
+//    }
+  
     while (1) {
         delayMs(1000);
         led->Toggle();

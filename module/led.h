@@ -2,7 +2,7 @@
 #ifndef __LED_H
 #define __LED_H
 
-#define LED_PIN ((uint16_t)0x0010)  /* Pin 4 selected    */
+#define LED_PIN ((uint16_t)0x0040)  /* Pin 4 selected    */
 
 
 /* interface function table declaration */

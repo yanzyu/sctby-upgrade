@@ -1,5 +1,29 @@
 {
-	"deveui":"0000000001020304",
-	"firmname":"helloWord.bin",
-	"firmaddr":"08005000"
+	"version":	"00000000",
+	"address":	"08005000",
+	"size":		"00001474",
+	"crc32":	"122336d3",
+	"module":[
+		{
+			"name":"./firmware/INIT_EROM",
+			"addr":"08005000"
+		},
+		{
+			"name":"./firmware/DESC_EROM",
+			"addr":"08005300"
+		},
+		{
+			"name":"./firmware/BSW_EROM",
+			"addr":"08005400"
+		},
+		{
+			"name":"./firmware/LED_EROM",
+			"addr":"08006400"
+		}
+	],
+	"sensor":[
+		{
+			"deveui":"0000000001020304"
+		}
+	]
 }
