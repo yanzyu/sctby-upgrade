@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\app_obj\application.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\app_obj\application.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Mon Sep 26 19:27:24 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Tue Sep 27 17:49:36 2016
 <BR><P>
 <H3>Maximum Stack Usage =        148 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -27,12 +27,12 @@ Function Pointers
  <LI><a href="#[d]">EXTI2_3_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[e]">EXTI4_15_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[a]">FLASH_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
- <LI><a href="#[22]">HAL_GetTick</a> from stm32l0xx_hal.o(i.HAL_GetTick) referenced from bsw.o(.ARM.__AT_0x08005400)
- <LI><a href="#[20]">HalInit</a> from bsw.o(i.HalInit) referenced from bsw.o(.ARM.__AT_0x08005400)
+ <LI><a href="#[22]">HAL_GetTick</a> from stm32l0xx_hal.o(i.HAL_GetTick) referenced from bsw.o(.ARM.__AT_0x08005300)
+ <LI><a href="#[20]">HalInit</a> from bsw.o(i.HalInit) referenced from bsw.o(.ARM.__AT_0x08005300)
  <LI><a href="#[2]">HardFault_Handler</a> from stm32l0xx_it.o(i.HardFault_Handler) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[18]">I2C1_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[19]">I2C2_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
- <LI><a href="#[23]">InitUart1</a> from uart.o(i.InitUart1) referenced from bsw.o(.ARM.__AT_0x08005400)
+ <LI><a href="#[23]">InitUart1</a> from uart.o(i.InitUart1) referenced from bsw.o(.ARM.__AT_0x08005300)
  <LI><a href="#[13]">LPTIM1_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[1e]">LPUART1_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[1]">NMI_Handler</a> from stm32l0xx_it.o(i.NMI_Handler) referenced from startup_stm32l051xx.o(RESET)
@@ -54,15 +54,15 @@ Function Pointers
  <LI><a href="#[1d]">USART2_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[7]">WWDG_IRQHandler</a> from startup_stm32l051xx.o(.text) referenced from startup_stm32l051xx.o(RESET)
  <LI><a href="#[28]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_stm32l051xx.o(.text)
- <LI><a href="#[21]">clkConfig</a> from clock.o(i.clkConfig) referenced from bsw.o(.ARM.__AT_0x08005400)
- <LI><a href="#[29]">ledInit</a> from led.o(i.ledInit) referenced from led.o(.ARM.__AT_0x08006400)
- <LI><a href="#[2b]">ledOff</a> from led.o(i.ledOff) referenced from led.o(.ARM.__AT_0x08006400)
- <LI><a href="#[2a]">ledOn</a> from led.o(i.ledOn) referenced from led.o(.ARM.__AT_0x08006400)
- <LI><a href="#[2c]">ledToggle</a> from led.o(i.ledToggle) referenced from led.o(.ARM.__AT_0x08006400)
+ <LI><a href="#[21]">clkConfig</a> from clock.o(i.clkConfig) referenced from bsw.o(.ARM.__AT_0x08005300)
+ <LI><a href="#[29]">ledInit</a> from led.o(i.ledInit) referenced from led.o(.ARM.__AT_0x08006300)
+ <LI><a href="#[2b]">ledOff</a> from led.o(i.ledOff) referenced from led.o(.ARM.__AT_0x08006300)
+ <LI><a href="#[2a]">ledOn</a> from led.o(i.ledOn) referenced from led.o(.ARM.__AT_0x08006300)
+ <LI><a href="#[2c]">ledToggle</a> from led.o(i.ledToggle) referenced from led.o(.ARM.__AT_0x08006300)
  <LI><a href="#[1f]">main</a> from app_main.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
- <LI><a href="#[26]">uartReceive_Pkt</a> from uart.o(i.uartReceive_Pkt) referenced from bsw.o(.ARM.__AT_0x08005400)
- <LI><a href="#[25]">uartSendString</a> from uart.o(i.uartSendString) referenced from bsw.o(.ARM.__AT_0x08005400)
- <LI><a href="#[24]">uartSend_IT</a> from uart.o(i.uartSend_IT) referenced from bsw.o(.ARM.__AT_0x08005400)
+ <LI><a href="#[26]">uartReceive_Pkt</a> from uart.o(i.uartReceive_Pkt) referenced from bsw.o(.ARM.__AT_0x08005300)
+ <LI><a href="#[25]">uartSendString</a> from uart.o(i.uartSendString) referenced from bsw.o(.ARM.__AT_0x08005300)
+ <LI><a href="#[24]">uartSend_IT</a> from uart.o(i.uartSend_IT) referenced from bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P>
 <H3>
@@ -209,7 +209,7 @@ Global Symbols
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartReceive_Pkt
 <LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[3b]"></a>HAL_IncTick</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32l0xx_hal.o(i.HAL_IncTick))
 <BR><BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
@@ -314,7 +314,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32l0xx_it.o(i.HardFault_Handler))
 <BR><BR>[Calls]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardFault_Handler
@@ -324,7 +324,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32l051xx.o(RESET)
 </UL>
 <P><STRONG><a name="[23]"></a>InitUart1</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, uart.o(i.InitUart1))
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32l0xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32l051xx.o(RESET)
@@ -367,22 +367,22 @@ Global Symbols
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetOscConfig
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[26]"></a>uartReceive_Pkt</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, uart.o(i.uartReceive_Pkt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = uartReceive_Pkt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[25]"></a>uartSendString</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, uart.o(i.uartSendString))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = uartSendString
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[24]"></a>uartSend_IT</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, uart.o(i.uartSend_IT))
-<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005400)
+<BR>[Address Reference Count : 1]<UL><LI> bsw.o(.ARM.__AT_0x08005300)
 </UL>
 <P><STRONG><a name="[3a]"></a>wakeUpTimeIRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, stop.o(i.wakeUpTimeIRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = wakeUpTimeIRQHandler &rArr; HAL_RTCEx_WakeUpTimerIRQHandler
@@ -393,16 +393,16 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[29]"></a>ledInit</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, led.o(i.ledInit))
-<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006400)
+<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006300)
 </UL>
 <P><STRONG><a name="[2b]"></a>ledOff</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, led.o(i.ledOff))
-<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006400)
+<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006300)
 </UL>
 <P><STRONG><a name="[2a]"></a>ledOn</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, led.o(i.ledOn))
-<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006400)
+<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006300)
 </UL>
 <P><STRONG><a name="[2c]"></a>ledToggle</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, led.o(i.ledToggle))
-<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006400)
+<BR>[Address Reference Count : 1]<UL><LI> led.o(.ARM.__AT_0x08006300)
 </UL><P>
 <H3>
 Local Symbols

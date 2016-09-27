@@ -1,24 +1,12 @@
 {
 	"version":	"00000000",
-	"address":	"08005000",
+	"address":	"08004F00",
 	"size":		"00001474",
-	"crc32":	"122336d3",
+	"crc32":	"4fb1d8d8",
 	"module":[
 		{
-			"name":"./firmware/INIT_EROM",
-			"addr":"08005000"
-		},
-		{
-			"name":"./firmware/DESC_EROM",
-			"addr":"08005300"
-		},
-		{
-			"name":"./firmware/BSW_EROM",
-			"addr":"08005400"
-		},
-		{
-			"name":"./firmware/LED_EROM",
-			"addr":"08006400"
+			"name":"./firmware/FULL_EROM",
+			"addr":"08004F00"
 		}
 	],
 	"sensor":[

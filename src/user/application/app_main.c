@@ -63,7 +63,6 @@ uint8_t *num2str(uint32_t n) {
 int main(void)
 {
     uint32_t timetick;
-    uint32_t i;
     bsw = (Bsw_t*)desc_t->module[MODULE_ID_BSW].entry;
     led = (Led_t*)desc_t->module[MODULE_ID_LED].entry;
     

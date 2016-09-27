@@ -27,9 +27,13 @@ Project File Date:  09/23/2016
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'application'
+compiling system_stm32l0xx.c...
+linking...
+Program Size: Code=3180 RO-data=372 RW-data=76 ZI-data=1064  
+FromELF: creating hex file...
 After Build - User command #1: D:\GitHub\sctby-upgrade\MDK-ARM\createFirm.bat
 D:\GitHub\sctby-upgrade\MDK-ARM>"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" --bin ".\app_obj\application.axf"  --output firmware\app 
-D:\GitHub\sctby-upgrade\MDK-ARM>"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" --bincombined --bincombined_padding=1,0x1A ".\app_obj\application.axf"  --output firmware\app\imag.bin 
+D:\GitHub\sctby-upgrade\MDK-ARM>"C:\Keil_v5\ARM\ARMCC\Bin\fromelf.exe" --bincombined --bincombined_padding=1,0x1A ".\app_obj\application.axf"  --output firmware\app\FULL_EROM 
 ".\app_obj\application.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>

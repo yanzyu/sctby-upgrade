@@ -30,8 +30,9 @@ typedef struct{
 ******************************************************************************/
 enum{
     /* INIT and DESC module */
-    MODULE_ID_INIT = 0,
-    MODULE_ID_DESC,
+    MODULE_ID_DESC = 0,
+    MODULE_ID_INIT,
+    
     /* normal module */
     MODULE_ID_BSW,
     MODULE_ID_LED,
