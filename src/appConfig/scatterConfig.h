@@ -55,6 +55,7 @@
 #define INIT_RW_BASE       DESC_RW_END
 #define INIT_RO_END        (INIT_RO_BASE + INIT_RO_SIZE)
 #define INIT_RW_END        (INIT_RW_BASE + INIT_RW_SIZE)
+#define APP_ENTRY          INIT_RO_BASE
 
 /* module version */
 #define INIT_Ver_MAJOR   (0x00)

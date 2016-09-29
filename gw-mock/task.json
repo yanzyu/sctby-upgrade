@@ -5,13 +5,30 @@
 	"crc32":	"4fb1d8d8",
 	"module":[
 		{
-			"name":"./firmware/FULL_EROM",
+			"name":"./firmware/DESC_EROM",
 			"addr":"08004F00"
+		},
+		{
+			"name":"./firmware/INIT_EROM",
+			"addr":"08005000"
+		},
+		{
+			"name":"./firmware/BSW_EROM",
+			"addr":"08005300"
+		},
+		{
+			"name":"./firmware/LED_EROM",
+			"addr":"08006300"
 		}
 	],
 	"sensor":[
 		{
-			"deveui":"0000000001020304"
+			"deveui":"0000000001020304",
+			"status":123
+		},
+		{
+			"deveui":"0000000001020305",
+			"status":123
 		}
 	]
 }

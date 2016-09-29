@@ -440,8 +440,8 @@ Image Symbol Table
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
     init.s                                   0x00000000   Number         0  init.o ABSOLUTE
-    .ARM.__AT_0x08004F00                     0x08004f00   Section       12  appconfig.o(.ARM.__AT_0x08004F00)
-    .constdata                               0x08004f0c   Section       48  appconfig.o(.constdata)
+    .ARM.__AT_0x08004F00                     0x08004f00   Section       24  appconfig.o(.ARM.__AT_0x08004F00)
+    .constdata                               0x08004f18   Section       48  appconfig.o(.constdata)
     RESET                                    0x08005000   Section      192  startup_stm32l051xx.o(RESET)
     .ARM.Collect$$$$00000000                 0x080050c0   Section        0  entry.o(.ARM.Collect$$$$00000000)
     .ARM.Collect$$$$00000001                 0x080050c0   Section        4  entry2.o(.ARM.Collect$$$$00000001)
@@ -524,8 +524,8 @@ Image Symbol Table
     _clock_init                               - Undefined Weak Reference
     _microlib_exit                            - Undefined Weak Reference
     __Vectors_Size                           0x000000c0   Number         0  startup_stm32l051xx.o ABSOLUTE
-    desc                                     0x08004f00   Data          12  appconfig.o(.ARM.__AT_0x08004F00)
-    moduleTab                                0x08004f0c   Data          48  appconfig.o(.constdata)
+    desc                                     0x08004f00   Data          24  appconfig.o(.ARM.__AT_0x08004F00)
+    moduleTab                                0x08004f18   Data          48  appconfig.o(.constdata)
     __Vectors                                0x08005000   Data           4  startup_stm32l051xx.o(RESET)
     __Vectors_End                            0x080050c0   Data           0  startup_stm32l051xx.o(RESET)
     __main                                   0x080050c1   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
@@ -633,14 +633,14 @@ Memory Map of the image
 
   Image Entry point : 0x080050c1
 
-  Load Region DESC_LROM (Base: 0x08004f00, Size: 0x0000003c, Max: 0x00000100, ABSOLUTE)
+  Load Region DESC_LROM (Base: 0x08004f00, Size: 0x00000048, Max: 0x00000100, ABSOLUTE)
 
-    Execution Region DESC_EROM (Base: 0x08004f00, Size: 0x0000003c, Max: 0x00000100, ABSOLUTE)
+    Execution Region DESC_EROM (Base: 0x08004f00, Size: 0x00000048, Max: 0x00000100, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08004f00   0x0000000c   Data   RO         1545    .ARM.__AT_0x08004F00  appconfig.o
-    0x08004f0c   0x00000030   Data   RO         1546    .constdata          appconfig.o
+    0x08004f00   0x00000018   Data   RO         1545    .ARM.__AT_0x08004F00  appconfig.o
+    0x08004f18   0x00000030   Data   RO         1546    .constdata          appconfig.o
 
 
 
@@ -759,8 +759,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       124         10          0         12          0       3234   app_main.o
-         0          0         60          0          0        545   appconfig.o
+       124         10          0         12          0       3318   app_main.o
+         0          0         72          0          0        545   appconfig.o
          8          0         28          0          0        856   bsw.o
        104          8          0          0          0        572   clock.o
        100         22         16          0          0       2021   led.o
@@ -771,11 +771,11 @@ Image component sizes
         56          8          0          0          0        898   stm32l0xx_hal_rtc_ex.o
         26          0          0          0          0       2967   stm32l0xx_it.o
         32         10          0          0         36       1372   stop.o
-        88         22          0         29          0       1221   system_stm32l0xx.o
+        88         22          0         29          0       1217   system_stm32l0xx.o
        428         54          0         28          0      12282   uart.o
 
     ----------------------------------------------------------------------
-      3048        258        372         76       1064     196829   Object Totals
+      3048        258        384         76       1064     196909   Object Totals
          0          0         48          0          0          0   (incl. Generated)
          6          0          3          3          4          0   (incl. Padding)
 
@@ -815,15 +815,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3180        274        372         76       1064     195625   Grand Totals
-      3180        274        372         76       1064     195625   ELF Image Totals
-      3180        274        372         76          0          0   ROM Totals
+      3180        274        384         76       1064     195705   Grand Totals
+      3180        274        384         76       1064     195705   ELF Image Totals
+      3180        274        384         76          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3552 (   3.47kB)
+    Total RO  Size (Code + RO Data)                 3564 (   3.48kB)
     Total RW  Size (RW Data + ZI Data)              1140 (   1.11kB)
-    Total ROM Size (Code + RO Data + RW Data)       3628 (   3.54kB)
+    Total ROM Size (Code + RO Data + RW Data)       3640 (   3.55kB)
 
 ==============================================================================
 

@@ -21,7 +21,7 @@
 #include "led.h"
 #include "bsw.h"
 
-const moduleDesc_t *desc_t = (moduleDesc_t*)(DESC_RO_BASE);
+const ModuleDesc_t *desc_t = (ModuleDesc_t*)(DESC_RO_BASE);
 const Bsw_t *bsw;
 const Led_t *led;
 uint8_t buf[9];    

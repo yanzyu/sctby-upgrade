@@ -94,9 +94,9 @@ func readConfig() (task Task_t, err error) {
 		fmt.Println(err.Error())
 		return Task_t{}, err
 	}
-	for _, s := range task.Sensor {
-		s.Status = 0
-	}
+	// for _, s := range task.Sensor {
+	// 	s.Status = 0
+	// }
 	/* for test */
 	fmt.Println("received an ota task")
 	fmt.Printf("version:%s, address:%s, crc32:%s\n", task.Version, task.Address, task.Crc32)
@@ -168,7 +168,7 @@ func (s *SerialSender) respSN(task *Task_t, index int) bool {
 		return  false
 	}
 	payload := []byte{}
-	if task.Sensor[index].Status == len(task.Module) {
+	if task.Sensor[index].Status >= len(task.Module) {
 		// jump to application
 		payload = append(payload, CMD_JUMP)
 		appAddr, _ := hex.DecodeString(task.Address)

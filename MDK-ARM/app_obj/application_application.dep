@@ -479,7 +479,7 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-F (..\src\user\application\app_main.c)(0x57EA34D2)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\app_main.o --omf_browse .\app_obj\app_main.crf --depend .\app_obj\app_main.d)
+F (..\src\user\application\app_main.c)(0x57EB1DCC)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\app_main.o --omf_browse .\app_obj\app_main.crf --depend .\app_obj\app_main.d)
 I (..\src\user\application\app_main.h)(0x57D608BE)
 I (..\src\hal_driver\Inc\stm32l0xx_hal.h)(0x56E6765D)
 I (..\src\user\application\stm32l0xx_hal_conf.h)(0x56E67663)
@@ -514,8 +514,8 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-I (..\src\appConfig\appConfig.h)(0x57EA3FE1)
-I (..\src\appConfig\scatterConfig.h)(0x57EA313B)
+I (..\src\appConfig\appConfig.h)(0x57EB2A82)
+I (..\src\appConfig\scatterConfig.h)(0x57EB2ACC)
 I (..\module\led.h)(0x57E88635)
 I (..\module\bsw.h)(0x57D7A9E1)
 I (..\src\perpherial\Inc\crc.h)(0x57E0F88E)
@@ -598,7 +598,7 @@ I (..\src\perpherial\Inc\clock.h)(0x56E67664)
 I (..\src\perpherial\Inc\crc.h)(0x57E0F88E)
 I (..\src\perpherial\Inc\uart.h)(0x57E4FB96)
 I (..\src\perpherial\Inc\stop.h)(0x56E67664)
-F (..\src\user\application\system_stm32l0xx.c)(0x57EA40AD)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\system_stm32l0xx.o --omf_browse .\app_obj\system_stm32l0xx.crf --depend .\app_obj\system_stm32l0xx.d)
+F (..\src\user\application\system_stm32l0xx.c)(0x57EB8250)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\system_stm32l0xx.o --omf_browse .\app_obj\system_stm32l0xx.crf --depend .\app_obj\system_stm32l0xx.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57E4EB39)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l051xx.h)(0x562D8D02)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm0plus.h)(0x5735959E)
@@ -632,15 +632,15 @@ I (..\src\hal_driver\Inc\STM32L0xx_hal_tim.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
-I (..\src\appConfig\scatterConfig.h)(0x57EA313B)
+I (..\src\appConfig\scatterConfig.h)(0x57EB2ACC)
 F (..\src\user\application\startup_stm32l051xx.s)(0x57BE5908)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include--pd "__UVISION_VERSION SETA 520" --pd "_RTE_ SETA 1" --pd "STM32L051xx SETA 1"--list .\app_obj\startup_stm32l051xx.lst --xref -o .\app_obj\startup_stm32l051xx.o --depend .\app_obj\startup_stm32l051xx.d)
-F (..\src\appConfig\appConfig.c)(0x57EA2FC9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\appconfig.o --omf_browse .\app_obj\appconfig.crf --depend .\app_obj\appconfig.d)
-I (..\src\appConfig\appConfig.h)(0x57EA3FE1)
-I (..\src\appConfig\scatterConfig.h)(0x57EA313B)
-F (..\src\appConfig\appConfig.h)(0x57EA3FE1)()
+F (..\src\appConfig\appConfig.c)(0x57EB8EBB)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\appconfig.o --omf_browse .\app_obj\appconfig.crf --depend .\app_obj\appconfig.d)
+I (..\src\appConfig\appConfig.h)(0x57EB2A82)
+I (..\src\appConfig\scatterConfig.h)(0x57EB2ACC)
+F (..\src\appConfig\appConfig.h)(0x57EB2A82)()
 F (..\module\led.c)(0x57E4F7A8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\led.o --omf_browse .\app_obj\led.crf --depend .\app_obj\led.d)
-I (..\src\appConfig\appConfig.h)(0x57EA3FE1)
-I (..\src\appConfig\scatterConfig.h)(0x57EA313B)
+I (..\src\appConfig\appConfig.h)(0x57EB2A82)
+I (..\src\appConfig\scatterConfig.h)(0x57EB2ACC)
 I (..\module\led.h)(0x57E88635)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57E4EB39)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l051xx.h)(0x562D8D02)
@@ -676,8 +676,8 @@ I (..\src\hal_driver\Inc\stm32l0xx_hal_tim_ex.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\STM32L0xx_hal_uart.h)(0x56E6765E)
 I (..\src\hal_driver\Inc\stm32l0xx_hal_uart_ex.h)(0x56E6765E)
 F (..\module\bsw.c)(0x57E4F6FB)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\src\hal_driver\Inc -I ..\src\hal_driver\Inc\Legacy -I ..\src\perpherial\Inc -I ..\src\appConfig -I ..\module -I ..\src\user\application --C99-I D:\GitHub\sctby-upgrade\MDK-ARM\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include-D__UVISION_VERSION="520" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx-o .\app_obj\bsw.o --omf_browse .\app_obj\bsw.crf --depend .\app_obj\bsw.d)
-I (..\src\appConfig\appConfig.h)(0x57EA3FE1)
-I (..\src\appConfig\scatterConfig.h)(0x57EA313B)
+I (..\src\appConfig\appConfig.h)(0x57EB2A82)
+I (..\src\appConfig\scatterConfig.h)(0x57EB2ACC)
 I (..\module\bsw.h)(0x57D7A9E1)
 I (..\src\perpherial\Inc\crc.h)(0x57E0F88E)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.5.0\Device\Include\stm32l0xx.h)(0x57E4EB39)
