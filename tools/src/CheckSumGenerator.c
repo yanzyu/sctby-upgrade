@@ -74,6 +74,7 @@ int main(int argc, char *argv[]) {
     uint8_t *data;
     ModuleDesc_t *desc;
     uint32_t crc32, size, desc_size;
+    char fileBufName[100];
        
     if (argc < 3) {
         printf("please enter the FULL_EROM file name\n");
@@ -88,7 +89,8 @@ int main(int argc, char *argv[]) {
     crc32 = Crc32IEEE((uint8_t*)&(desc->moduleCnt), size - ((uint8_t*)&(desc->moduleCnt) - (uint8_t*)desc));
     desc->moduleSize = size - ((uint8_t*)&(desc->moduleCnt) - (uint8_t*)desc);
     desc->moduleCrc32 = crc32;
-    writeData(argv[1], data, size);
+    sprintf(fileBufName, "%s_M", argv[1]);
+    writeData(fileBufName, data, size);
     free(data);
 
     data = readData(argv[2], &desc_size);
@@ -98,7 +100,8 @@ int main(int argc, char *argv[]) {
     desc = (ModuleDesc_t*)data;
     desc->moduleSize = size - ((uint8_t*)&(desc->moduleCnt) - (uint8_t*)desc);
     desc->moduleCrc32 = crc32;
-    writeData(argv[2], data, desc_size);
+    sprintf(fileBufName, "%s_M", argv[2]);
+    writeData(fileBufName, data, desc_size);
     free(data);
 
     return 0;
