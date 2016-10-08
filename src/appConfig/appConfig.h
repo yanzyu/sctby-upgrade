@@ -20,9 +20,9 @@ typedef struct{
     
 typedef struct{
     unsigned int firmVer;
-    unsigned int moduleEntry;
-    unsigned int moduleSize;
-    unsigned int moduleCrc32;
+    unsigned int firmEntry;
+    unsigned int firmSize;
+    unsigned int firmCrc32;
     unsigned int moduleCnt;
     ModuleInfo_t *module;
 } ModuleDesc_t;  // module description type

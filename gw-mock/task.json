@@ -24,11 +24,11 @@
 	"sensor":[
 		{
 			"deveui":"0000000001020304",
-			"status":123
+			"status":0
 		},
 		{
 			"deveui":"0000000001020305",
-			"status":123
+			"status":0
 		}
 	]
 }

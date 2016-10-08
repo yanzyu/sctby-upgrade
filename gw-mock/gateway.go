@@ -154,7 +154,8 @@ func (s *SerialSender) waitForReq(task *Task_t) (bool, int) {
 			fmt.Printf("%02x", c)
 		}
 		fmt.Println(", which is not target version")
-		return false, 0
+		//return false, 0
+		return true, index
 	}
 	
 	return true, index
